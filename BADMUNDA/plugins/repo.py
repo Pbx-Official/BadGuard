@@ -21,23 +21,23 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BADMUSIC/fork")
+                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BADMUSIC/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Badhacker98/BadGroup_Bot/fork")
+                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Pbx-Official/BadGroup_Bot/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Badhacker98/PbXbot/fork")
+                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Pbx-Official/PbXbot/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/PBX_2.0/fork")
+                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/PBX_2.0/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BAD_SPAM_X/fork")
+                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BAD_SPAM_X/fork")
                  ]
             ]
         ),
@@ -54,23 +54,23 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BADMUSIC/fork")
+                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BADMUSIC/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Badhacker98/BadGroup_Bot/fork")
+                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Pbx-Official/BadGroup_Bot/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Badhacker98/PbXbot/fork")
+                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Pbx-Official/PbXbot/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/PBX_2.0/fork")
+                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/PBX_2.0/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BAD_SPAM_X/fork")
+                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BAD_SPAM_X/fork")
                  ]
             ]
         ),
@@ -87,23 +87,23 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BADMUSIC/fork")
+                        "🗡️ 𝐌ᴜsɪᴄ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BADMUSIC/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Badhacker98/BadGroup_Bot/fork")
+                        "🗡️ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ  🗡️", url=f"https://github.com/Pbx-Official/BadGroup_Bot/fork")
                 ],
                 [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Badhacker98/PbXbot/fork")
+                        "🗡️ 𝐏ʙx ᴜ  𝐑ᴇᴘᴏ  🗡️", url=f"https://github.com/Pbx-Official/PbXbot/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/PBX_2.0/fork")
+                        "🗡️ 𝐏ʙx 2.0 ᴜ 𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/PBX_2.0/fork")
                 ],
                  [
                     InlineKeyboardButton(
-                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Badhacker98/BAD_SPAM_X/fork")
+                        "🗡️ 𝐒ᴘᴀᴍ  𝐑ᴇᴘᴏ 🗡️", url=f"https://github.com/Pbx-Official/BAD_SPAM_X/fork")
                  ]
             ]
         ),
