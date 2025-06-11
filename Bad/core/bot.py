@@ -119,4 +119,5 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 application = ApplicationBuilder().token(config.BOT_TOKEN).build()
 
-plugins = dict(root="SUKH.plugins")
+plugins = dict(root="Bad.plugins")
+            
