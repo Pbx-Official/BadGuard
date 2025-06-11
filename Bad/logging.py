@@ -1,5 +1,6 @@
 import time
-import config 
+import config
+from config import MONGO_DB_URI
 import logging
 from pymongo import MongoClient
 from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
@@ -17,9 +18,9 @@ logging.basicConfig(
 
 LOGGERR = logging.getLogger(__name__)
 boot = time.time()
-mongodb = MongoCli(config.MONGO_DB_URI)
+mongodb = MongoCli(MONGO_DB_URI)
 db = mongodb.Anonymous
-mongo = MongoClient(config.MONGO_DB_URI)
+mongo = MongoClient(MONGO_DB_URI)
 OWNER = config.OWNER_ID
 logging.getLogger("httpx").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
