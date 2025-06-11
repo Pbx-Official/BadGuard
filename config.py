@@ -11,6 +11,8 @@ load_dotenv()
 ### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
 TEMP_DB_FOLDER = "tempdb"
+LOG = 2
+LOG_FILE_NAME = "BADlogs.txt"
 
 
 # ________________________________________________________________________________#
