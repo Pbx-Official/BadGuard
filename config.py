@@ -36,7 +36,7 @@ MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://bikash:bikash@bikash.3jkvhp
 
 # ________________________________________________________________________________#
 # You'll need a Private Group ID for this.
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1002093247039"))
+LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1002056907061"))
 
 # ________________________________________________________________________________#
 
