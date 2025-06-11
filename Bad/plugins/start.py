@@ -49,7 +49,7 @@ async def start_comm(client, message: Message):
     await message.react("❤️")
 
     try:
-        out = start_pannel()
+        out = start_pannel({})
         bad = await message.reply_text("**ʜᴇʏ 💌**")
         await bad.delete()
         bad = await message.reply_text("**ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ 💞**")
@@ -86,7 +86,7 @@ async def testbot(client, message: Message):
         except AttributeError:
             chat_photo = START_IMG_URL
 
-        out = alive_panel()
+        out = alive_panel({})
         uptime = int(time.time() - _boot_)
 
         await message.reply_photo(
@@ -142,7 +142,7 @@ async def welcome(client, message: Message):
 
 @app.on_callback_query(filters.regex("go_to_start"))
 async def go_to_home(client, callback_query: CallbackQuery):
-    out = start_pannel()
+    out = start_pannel({})
     await callback_query.message.edit_text(
         text=f"Welcome back to the bot, {callback_query.message.from_user.mention}!",
         reply_markup=InlineKeyboardMarkup(out),
