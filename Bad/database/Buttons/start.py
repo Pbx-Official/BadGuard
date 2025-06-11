@@ -36,4 +36,14 @@ def private_panel(_):
         [InlineKeyboardButton(text="۞ 𝐇𝙴𝙻𝙿 ۞", callback_data="settings_back_helper")],
     ]
     return buttons
-  
+
+def alive_panel(_):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                text="✿︎ ᴀᴅᴅ ᴍᴇ ✿︎", url=f"https://t.me/{app.username}?startgroup=true"
+            ),
+            InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}"),
+        ],
+    ]
+    return buttons
