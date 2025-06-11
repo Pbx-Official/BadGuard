@@ -77,3 +77,5 @@ EXTRA_PLUGINS_FOLDER = getenv("EXTRA_PLUGINS_FOLDER", "plugins")
 
 # Your folder name in your extra plugins repo where all plugins stored
 
+# Time zone (india)
+TIME_ZONE = "Asia/Kolkata"
