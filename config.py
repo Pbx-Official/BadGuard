@@ -20,7 +20,7 @@ BOT_USERNAME ="Broken_Bot"
 
 # ________________________________________________________________________________#
 ## Get it from @Botfather in Telegram.
-BOT_TOKEN = getenv("BOT_TOKEN", "7436017266:AAEdGRwaM6WXsod3bV3qGIboCZIeJiLAXOk")
+BOT_TOKEN = "7436017266:AAEdGRwaM6WXsod3bV3qGIboCZIeJiLAXOk"
 
 # ________________________________________________________________________________#
 # Get it from http://dashboard.heroku.com/account
