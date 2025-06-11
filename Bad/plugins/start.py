@@ -25,8 +25,27 @@ from Bad.database.database import (
 from Bad.database.Buttons import alive_panel, start_pannel
 from .help import paginate_modules
 
+# Helper function for uptime
+def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "d"]
 
-loop = asyncio.get_running_loop()
+    while count < 4:
+        count += 1
+        if count < 3:
+            remainder, result = divmod(seconds, 60)
+        else:
+            remainder, result = divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+    for i in range(len(time_list)):
+        up_time += str(time_list[i]) + time_suffix_list[i]
+    return up_time[::-1]
+
 
 STICKER = [
     "CAACAgUAAx0CepnpNQABATUjZypavrymDoERINkF-M3u9JDQ6K8AAhoDAAIOnnlVpyrYiDnVgWYeBA",
@@ -49,8 +68,7 @@ async def ban_new(client, message):
 
 
 @app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
-@LanguageStart
-async def testbot(client, message: Message, _):
+async def testbot(client, message: Message):
     try:
         chat_id = message.chat.id
         try:
@@ -64,29 +82,27 @@ async def testbot(client, message: Message, _):
             chat_photo = START_IMG_URL
 
         # Get the alive panel and uptime
-        out = alive_panel(_)
+        out = alive_panel({})
         uptime = int(time.time() - _boot_)
 
+        # Hardcoded caption
+        caption_text = (
+            f"{client.mention} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ.\n\n"
+            f"<b>✫ ᴜᴘᴛɪᴍᴇ :</b> {get_readable_time(uptime)}"
+        )
+
         # Send the response with the group photo or fallback to START_IMG_URL
-        if chat_photo:
-            await message.reply_photo(
-                photo=chat_photo,
-                caption=_["start_7"].format(client.mention, get_readable_time(uptime)),
-                reply_markup=InlineKeyboardMarkup(out),
-            )
-        else:
-            await message.reply_photo(
-                photo=config.START_IMG_URL,
-                caption=_["start_7"].format(client.mention, get_readable_time(uptime)),
-                reply_markup=InlineKeyboardMarkup(out),
-            )
+        await message.reply_photo(
+            photo=chat_photo,
+            caption=caption_text,
+            reply_markup=InlineKeyboardMarkup(out),
+        )
 
         # Add the chat to the served chat list
-        return await add_served_chat(chat_id)
+        await add_served_chat(chat_id)
 
     except Exception as e:
         print(f"Error: {e}")
-
 
 @app.on_message(filters.new_chat_members, group=3)
 async def welcome(client, message: Message):
@@ -96,18 +112,14 @@ async def welcome(client, message: Message):
     if config.PRIVATE_BOT_MODE == str(True):
         if not await is_served_private_chat(chat_id):
             await message.reply_text(
-                "**ᴛʜɪs ʙᴏᴛ's ᴘʀɪᴠᴀᴛᴇ ᴍᴏᴅᴇ ʜᴀs ʙᴇᴇɴ ᴇɴᴀʙʟᴇᴅ. ᴏɴʟʏ ᴍʏ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs. ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴜsᴇ ɪᴛ ɪɴ ʏᴏᴜʀ ᴄʜᴀᴛ, ᴀsᴋ ᴍʏ ᴏᴡɴᴇʀ ᴛᴏ ᴀᴜᴛʜᴏʀɪᴢᴇ ʏᴏᴜʀ ᴄʜᴀᴛ.**"
+                "**ᴛʜɪs ʙᴏᴛ's ᴘʀɪᴠᴀᴛᴇ ᴍᴏᴅᴇ ʜᴀs ʙᴇᴇɴ ᴇɴᴀʙʟᴇᴅ. ᴏɴʟʏ ᴍʏ ᴏᴡɴᴇʀ ᴄᴀɴ ᴜsᴇ ᴛʜɪs. ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴜsᴇ ᴍᴇ, ᴛʜᴇɴ ᴄʀᴇᴀᴛᴇ ʏᴏᴜʀ ᴏᴡɴ ᴏʀ ɢᴇᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ.**"
             )
             return await client.leave_chat(chat_id)
     else:
         await add_served_chat(chat_id)
 
-    # Handle new chat members
     for member in message.new_chat_members:
         try:
-            language = await get_lang(chat_id)
-            _ = get_string(language)
-
             # If bot itself joins the chat
             if member.id == client.id:
                 try:
@@ -118,24 +130,23 @@ async def welcome(client, message: Message):
                 except AttributeError:
                     chat_photo = START_IMG_URL
 
-                userbot = await get_assistant(chat_id)
-                out = start_pannel(_)
+                out = start_pannel({})
                 await message.reply_photo(
                     photo=chat_photo,
-                    caption=_["start_2"],
+                    caption="**๏ ᴛʜɪs ɪs ᴀᴅᴠᴀɴᴄᴇᴅ ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʙᴏᴛ ғᴏʀ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴘs + ᴄʜᴀɴɴᴇʟs ᴠᴄ.**\n\n**🎧 ᴘʟᴀʏ + ᴠᴘʟᴀʏ + ᴄᴘʟᴀʏ + ᴄᴠᴘʟᴀʏ 🎧**\n\n**➥ sᴜᴘᴘᴏʀᴛᴇᴅ ᴡᴇʟᴄᴏᴍᴇ - ʟᴇғᴛ ɴᴏᴛɪᴄᴇ, ᴛᴀɢᴀʟʟ, ᴠᴄᴛᴀɢ, ʙᴀɴ - ᴍᴜᴛᴇ, sʜᴀʏʀɪ, ʟᴜʀɪᴄs, sᴏɴɢ - ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅ, ᴇᴛᴄ... **\n\n**🔐ᴜꜱᴇ » /help ᴛᴏ ᴄʜᴇᴄᴋ ғᴇᴀᴛᴜʀᴇs.** 💞",
                     reply_markup=InlineKeyboardMarkup(out),
                 )
 
-            # Handle owner joining
+            # Owner joined
             if member.id in config.OWNER_ID:
                 return await message.reply_text(
-                    _["start_3"].format(client.mention, member.mention)
+                    f"ᴛʜᴇ ᴏᴡɴᴇʀ ᴏғ {client.mention}, {member.mention} ᴊᴜsᴛ ᴊᴏɪɴᴇᴅ ʏᴏᴜʀ ᴄʜᴀᴛ."
                 )
 
-            # Handle SUDOERS joining
+            # SUDOERS joined
             if member.id in SUDOERS:
                 return await message.reply_text(
-                    _["start_4"].format(client.mention, member.mention)
+                    f"ᴛʜᴇ sᴜᴅᴏ ᴜsᴇʀ ᴏғ {client.mention}, {member.mention} ᴊᴜsᴛ ᴊᴏɪɴᴇᴅ ʏᴏᴜʀ ᴄʜᴀᴛ."
                 )
             return
 
@@ -143,28 +154,25 @@ async def welcome(client, message: Message):
             print(f"Error: {e}")
             return
 
-
 @app.on_callback_query(filters.regex("go_to_start"))
-@LanguageStart
-async def go_to_home(client, callback_query: CallbackQuery, _):
-    out = music_start_panel(_)
+async def go_to_home(client, callback_query: CallbackQuery):
+    out = start_pannel({})
     await callback_query.message.edit_text(
-        text=_["start_2"].format(callback_query.message.from_user.mention, app.mention),
+        text="**๏ ᴛʜɪs ɪs ᴀᴅᴠᴀɴᴄᴇᴅ ᴍᴜsɪᴄ ᴘʟᴀʏᴇʀ ʙᴏᴛ ғᴏʀ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴘs + ᴄʜᴀɴɴᴇʟs ᴠᴄ.**\n\n**🎧 ᴘʟᴀʏ + ᴠᴘʟᴀʏ + ᴄᴘʟᴀʏ + ᴄᴠᴘʟᴀʏ 🎧**\n\n**➥ sᴜᴘᴘᴏʀᴛᴇᴅ ᴡᴇʟᴄᴏᴍᴇ - ʟᴇғᴛ ɴᴏᴛɪᴄᴇ, ᴛᴀɢᴀʟʟ, ᴠᴄᴛᴀɢ, ʙᴀɴ - ᴍᴜᴛᴇ, sʜᴀʏʀɪ, ʟᴜʀɪᴄs, sᴏɴɢ - ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅ, ᴇᴛᴄ... **\n\n**🔐ᴜꜱᴇ » /help ᴛᴏ ᴄʜᴇᴄᴋ ғᴇᴀᴛᴜʀᴇs.** 💞",
         reply_markup=InlineKeyboardMarkup(out),
     )
-
 
 __MODULE__ = "ʙᴏᴛ"
 __HELP__ = f"""
 <b>✦ c sᴛᴀɴᴅs ғᴏʀ ᴄʜᴀɴɴᴇʟ ᴘʟᴀʏ.</b>
 
-<b>★ /stats</b> - Gᴇᴛ Tᴏᴘ 𝟷𝟶 Tʀᴀᴄᴋs Gʟᴏʙᴀʟ Sᴛᴀᴛs, Tᴏᴘ 𝟷𝟶 Usᴇʀs ᴏғ ʙᴏᴛ, Tᴏᴘ 𝟷𝟶 Cʜᴀᴛs ᴏɴ ʙᴏᴛ, Tᴏᴘ 𝟷𝟶 Pʟᴀʏᴇᴅ ɪɴ ᴀ ᴄʜᴀᴛ ᴇᴛᴄ ᴇᴛᴄ.
+<b>★ /stats</b> - Gᴇᴛ Tᴏᴘ 𝟷𝟶 Tʀᴀᴄᴋs Gʟᴏʙᴀʟ Sᴛᴀᴛs, Tᴏᴘ 𝟷𝟶 Usᴇʀs ᴏғ ʙᴏᴛ, Tᴏᴘ 𝟷𝟶 Cʜᴀᴛs ᴏɴ ʙᴏᴛ, Tᴏᴘ 𝟷𝟶 Pʟᴀʏᴇʀs ᴏɴ ʙᴏᴛ.
 
 <b>★ /sudolist</b> - Cʜᴇᴄᴋ Sᴜᴅᴏ Usᴇʀs ᴏғ Bᴏᴛ
 
 <b>★ /lyrics [Mᴜsɪᴄ Nᴀᴍᴇ]</b> - Sᴇᴀʀᴄʜᴇs Lʏʀɪᴄs ғᴏʀ ᴛʜᴇ ᴘᴀʀᴛɪᴄᴜʟᴀʀ Mᴜsɪᴄ ᴏɴ ᴡᴇʙ.
 
-<b>★ /song [Tʀᴀᴄᴋ Nᴀᴍᴇ] ᴏʀ [YT Lɪɴᴋ]</b> - Dᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴛʀᴀᴄᴋ ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ ɪɴ ᴍᴘ𝟹 ᴏʀ ᴍᴘ𝟺 ғᴏʀᴍᴀᴛs.
+<b>★ /song [Tʀᴀᴄᴋ Nᴀᴍᴇ] ᴏʀ [YT Lɪɴᴋ]</b> - Dᴏᴡɴʟᴏᴀᴅ ᴀɴʏ ᴛʀᴀᴄᴋ ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ ɪɴ ᴍᴘ𝟹 ᴏʀ ᴍᴘ𝟷 ғᴏʀᴍᴀᴛs.
 
 <b>★ /player</b> - Gᴇᴛ ᴀ ɪɴᴛᴇʀᴀᴄᴛɪᴠᴇ Pʟᴀʏɪɴɢ Pᴀɴᴇʟ.
 
@@ -178,4 +186,3 @@ __HELP__ = f"""
 
 <b>✧ /authorized</b> - Cʜᴇᴄᴋ ᴀʟʟ ᴀʟʟᴏᴡᴇᴅ ᴄʜᴀᴛs ᴏғ ʏᴏᴜʀ ʙᴏᴛ.
 """
-
