@@ -13,16 +13,16 @@ from pyrogram.types import (
 
 import config
 from config import BANNED_USERS, START_IMG_URL
-from BADMUSIC import app
-from BADMUSIC.misc import SUDOERS, _boot_
-from BADMUSIC.utils.database import (
+from Bad import app
+from Bad.misc import SUDOERS, _boot_
+from Bad.database.database import (
     add_served_chat,
     add_served_user,
     is_banned_user,
     is_on_off,
     is_served_private_chat,
 )
-from BADMUSIC.utils.inline import alive_panel, start_pannel
+from Bad.database.inline import alive_panel, start_pannel
 
 STICKER = [
     "CAACAgUAAx0CepnpNQABATUjZypavrymDoERINkF-M3u9JDQ6K8AAhoDAAIOnnlVpyrYiDnVgWYeBA",
