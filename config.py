@@ -79,3 +79,10 @@ EXTRA_PLUGINS_FOLDER = getenv("EXTRA_PLUGINS_FOLDER", "plugins")
 
 # Time zone (india)
 TIME_ZONE = "Asia/Kolkata"
+
+#Start pic
+START_IMG_URL = getenv(
+    "START_IMG_URL",
+    "https://envs.sh/Yj2.jpg",
+)
+
