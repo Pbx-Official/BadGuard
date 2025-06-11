@@ -117,6 +117,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         )
         exit()
 
-application = ApplicationBuilder().token(config.BOT_TOKEN).build()
+
+from pytz import timezone
+
+application = ApplicationBuilder().token(config.BOT_TOKEN).timezone(timezone("UTC")).build()
 
 plugins = dict(root="SUKH.plugins")
