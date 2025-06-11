@@ -17,7 +17,7 @@ start_pannel()
     return buttons
 
 
-def private_panel(_):
+private_panel()
     buttons = [
         [
             InlineKeyboardButton(
