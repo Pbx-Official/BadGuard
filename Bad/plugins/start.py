@@ -22,7 +22,7 @@ from Bad.database.database import (
     is_on_off,
     is_served_private_chat,
 )
-from Bad.database.inline import alive_panel, start_pannel
+from Bad.database.Buttons import alive_panel, start_pannel
 
 STICKER = [
     "CAACAgUAAx0CepnpNQABATUjZypavrymDoERINkF-M3u9JDQ6K8AAhoDAAIOnnlVpyrYiDnVgWYeBA",
