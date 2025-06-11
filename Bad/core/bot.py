@@ -101,7 +101,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 # Initialize the python-telegram-bot application
 application = ApplicationBuilder().token(config.BOT_TOKEN).build()
-application.add_handler(CommandHandler("start", start))
 
 # Assuming plugins are loaded separately for python-telegram-bot
 plugins = dict(root="Bad.plugins")
