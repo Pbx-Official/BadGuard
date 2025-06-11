@@ -13,7 +13,6 @@ from pyrogram.types import (
 
 import config
 from config import BANNED_USERS, START_IMG_URL
-from strings import get_string
 from BADMUSIC import app
 from BADMUSIC.misc import SUDOERS, _boot_
 from BADMUSIC.utils.database import (
