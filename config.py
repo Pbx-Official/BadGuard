@@ -21,7 +21,7 @@ BOT_USERNAME ="Broken_Bot"
 
 # ________________________________________________________________________________#
 ## Get it from @Botfather in Telegram.
-BOT_TOKEN = "7436017266:AAEdGRwaM6WXsod3bV3qGIboCZIeJiLAXOk"
+BOT_TOKEN = "7572603594:AAF-Ta0fjBtVxdqjotm_CLRSmVEAep0J-Jc"
 
 # ________________________________________________________________________________#
 # Get it from http://dashboard.heroku.com/account
@@ -36,7 +36,7 @@ DB_NAME = "BadDB"
 MONGO_DB_URI = "mongodb+srv://karan69:karan69@cluster0.gfw7e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # ________________________________________________________________________________#
 # You'll need a Private Group ID for this.
-LOG_GROUP_ID = -1002056907061
+LOG_GROUP_ID = -1002093247039
 
 # ________________________________________________________________________________#
 
