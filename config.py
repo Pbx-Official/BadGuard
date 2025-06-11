@@ -8,8 +8,9 @@ import re
 
 load_dotenv()
 
+### DONT TOUCH or EDIT codes after this line
 BANNED_USERS = filters.user()
-
+TEMP_DB_FOLDER = "tempdb"
 
 
 # ________________________________________________________________________________#
