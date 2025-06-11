@@ -32,8 +32,10 @@ HEROKU_APP_NAME = getenv("HEROKU_APP_NAME")
 # ________________________________________________________________________________#
 # Database to save your chats and stats... Get MongoDB:-  https://telegra.ph/How-To-get-Mongodb-URI-04-06
 DB_NAME = "BadDB"
-MONGO_DB_URI = getenv("MONGO_DB_URI", "mongodb+srv://BADMUNDA:BADMYDAD@badhacker.i5nw9na.mongodb.net/")
-
+MONGO_DB_URI = getenv(
+    "MONGO_DB_URI",
+    "mongodb+srv://BADMUNDA:BADMYDAD@badhacker.i5nw9na.mongodb.net/?retryWrites=true&w=majority"
+)
 # ________________________________________________________________________________#
 # You'll need a Private Group ID for this.
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", "-1002056907061"))
