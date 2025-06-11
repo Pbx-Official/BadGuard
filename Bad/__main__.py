@@ -6,7 +6,7 @@ from pyrogram import idle
 from Bad import LOGGER, HELPABLE, app, Bad, application
 from Bad.misc import sudo
 from Bad.plugins import ALL_MODULES
-from Bad.utils.database import get_banned_users, get_gbanned
+from Bad.database.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
 nest_asyncio.apply()
