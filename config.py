@@ -87,3 +87,15 @@ START_IMG_URL = getenv(
     "https://envs.sh/Yj2.jpg",
 )
 
+
+# Only  Links formats are  accepted for this Var value.
+SUPPORT_CHANNEL = getenv(
+    "SUPPORT_CHANNEL", "https://t.me/PBX_CHAT"
+)  # Example:- https://t.me/PBX_CHAT
+SUPPORT_GROUP = getenv(
+    "SUPPORT_GROUP", "https://t.me/PBX_CHAT"
+)  # https://t.me/PBX_CHAT
+
+SUPPORT_CHAT = getenv(
+    "SUPPORT_GROUP", "https://t.me/PBX_CHAT"
+)
