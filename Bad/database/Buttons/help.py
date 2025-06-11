@@ -9,7 +9,7 @@ def support_group_markup(_):
         [
             [
                 InlineKeyboardButton(
-                    text=_["S_B_3"],
+                    text="۞ group ۞"
                     url=SUPPORT_GROUP,
                 ),
             ]
@@ -23,9 +23,9 @@ def help_back_markup(_):
         [
             [
                 InlineKeyboardButton(
-                    text=_["BACK_BUTTON"], callback_data=f"settings_back_helper"
+                    text="۞ back ۞" callback_data=f"settings_back_helper"
                 ),
-                InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data=f"close"),
+                InlineKeyboardButton(text="۞ close ۞" callback_data=f"close"),
             ]
         ]
     )
@@ -36,7 +36,7 @@ def private_help_panel(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_1"], url=f"https://t.me/{app.username}?start=help"
+                text="۞ 𝐇𝙴𝙻𝙿 ۞" url=f"https://t.me/{app.username}?start=help"
             )
         ],
     ]
