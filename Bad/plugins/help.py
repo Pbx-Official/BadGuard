@@ -9,7 +9,7 @@ import config
 from config import BANNED_USERS, START_IMG_URL
 from Bad import HELPABLE, app
 from Bad.database.database import is_commanddelete_on
-from Bad.database.inline.help import private_help_panel
+from Bad.database.Buttons.help import private_help_panel
 
 # Command
 HELP_COMMAND = ["help", "hlp"]
