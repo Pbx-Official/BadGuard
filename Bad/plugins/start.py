@@ -1,149 +1,149 @@
-import logging
-import os
-import platform
-import psutil
+import asyncio
 import time
-import json
+import random
 
-from pyrogram import Client, filters
-from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
-from config import BOT_USERNAME, OWNER_ID
-from Bad import app
-from Bad.misc import SUDOERS  # Importing SUDOERS for sudo-only commands
-from config import *
+from pyrogram import filters
+from pyrogram.enums import ParseMode
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 
-# Global Variables
-start_time = time.time()  # Initialize start_time to track bot uptime
-total_users_count = 0  # Example placeholder for total users count
-total_chats_count = 0  # Example placeholder for total chats count
+import config
+from config import BANNED_USERS, START_IMG_URL
+from strings import get_string
+from BADMUSIC import app
+from BADMUSIC.misc import SUDOERS, _boot_
+from BADMUSIC.utils.database import (
+    add_served_chat,
+    add_served_user,
+    is_banned_user,
+    is_on_off,
+    is_served_private_chat,
+)
+from BADMUSIC.utils.inline import alive_panel, start_pannel
 
-# Constants
-START_TEXT = """<blockquote>╭────────────────────── 
-╰──● ʜɪ ɪ ᴀᴍ  ˹𝑪𝒐𝒑𝒚ʀɪɢʜᴛ ✗ 𝜝𝒐𝒕˼🤍<blockquote>
+STICKER = [
+    "CAACAgUAAx0CepnpNQABATUjZypavrymDoERINkF-M3u9JDQ6K8AAhoDAAIOnnlVpyrYiDnVgWYeBA",
+]
 
-<blockquote>ғʀᴏм ᴄᴏᴘʏʀιɢнт ᴘʀᴏтᴇcтιᴏɴ тᴏ ᴍᴀιɴтᴀιɴιɴɢ ᴅᴇcᴏʀυм, ᴡᴇ'vᴇ ɢᴏт ιт cᴏvᴇʀᴇᴅ. 🌙<blockquote>
+@app.on_message(group=-1)
+async def ban_new(client, message):
+    user_id = (
+        message.from_user.id if message.from_user and message.from_user.id else 777000
+    )
+    if await is_banned_user(user_id):
+        try:
+            alert_message = "😳"
+            await message.chat.ban_member(user_id)
+            await message.reply_text(alert_message)
+        except:
+            pass
 
-<blockquote>●ɴᴏ cᴏммᴀɴᴅ, ᴊᴜѕт ᴀᴅᴅ тнιѕ ʙᴏт, ᴇvᴇʀyтнιɴɢ ιѕ ᴀυтᴏ 🍁<blockquote>
+@app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
+async def start_comm(client, message: Message):
+    chat_id = message.chat.id
+    await add_served_user(message.from_user.id)
+    await message.react("❤️")
 
-<blockquote>⋆━ׄ┄ׅ━ׄ┄ׅ━ׄ┄ׅ ━ׄ┄ׅ━ׄ┄ׅ━ׄ┄ׅ━ׄ┄ׅ━ׄ┄ׅ━ׄ┄ׅ━ׄ┄<blockquote>
-<blockquote>ᴍᴀᴅᴇ ᴡιтн 🖤 ʙy @II_BAD_BABY_II❣️<blockquote>
-"""
+    try:
+        out = start_pannel()
+        bad = await message.reply_text("**ʜᴇʏ 💌**")
+        await bad.delete()
+        bad = await message.reply_text("**ʜᴏᴡ ᴀʀᴇ ʏᴏᴜ 💞**")
+        await asyncio.sleep(0.1)
+        await bad.delete()
+        umm = await bad.reply_sticker(sticker=random.choice(STICKER))
+        chat_photo = START_IMG_URL
+        await umm.delete()
 
-HELP_TEXT = """💫ʜᴇʀᴇ ᴀʀᴇ sᴏᴍᴇ ᴄᴏᴍᴍᴀɴᴅs:
+        await message.reply_photo(
+            photo=chat_photo,
+            caption="Welcome to the bot! I'm here to assist you.",
+            reply_markup=InlineKeyboardMarkup(out),
+        )
+        if await is_on_off(config.LOG):
+            sender_id = message.from_user.id
+            sender_name = message.from_user.first_name
+            await app.send_message(
+                config.LOG_GROUP_ID,
+                f"{message.from_user.mention} has started bot.\n\n**User ID:** {sender_id}\n**User Name:** {sender_name}",
+            )
+    except Exception as e:
+        print(f"Error: {e}")
 
-● **ᴄᴏᴘʏʀɪɢʜᴛ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ**
+@app.on_message(filters.command(["start"]) & filters.group & ~BANNED_USERS)
+async def testbot(client, message: Message):
+    try:
+        chat_id = message.chat.id
+        try:
+            groups_photo = await client.download_media(
+                message.chat.photo.big_file_id, file_name=f"chatpp{chat_id}.png"
+            )
+            chat_photo = groups_photo if groups_photo else START_IMG_URL
+        except AttributeError:
+            chat_photo = START_IMG_URL
 
-● ᴘɪɴɢ  ᴄʜᴇᴄᴋ ʙᴏᴛ's ʀᴇsᴘᴏɴsᴇ ᴛɪᴍᴇ.
+        out = alive_panel()
+        uptime = int(time.time() - _boot_)
 
-● ᴅᴏɴ'ᴛ ᴇᴅɪᴛ ᴍsɢ sᴇɴᴅ.
+        await message.reply_photo(
+            photo=chat_photo,
+            caption=f"Bot is alive! Uptime: {get_readable_time(uptime)}",
+            reply_markup=InlineKeyboardMarkup(out),
+        )
+        await add_served_chat(chat_id)
+    except Exception as e:
+        print(f"Error: {e}")
 
-● ᴅᴏɴ'ᴛ ᴀɴʏ ᴅᴇᴄᴏᴍᴇɴᴛ sᴇɴᴅ.
+@app.on_message(filters.new_chat_members, group=3)
+async def welcome(client, message: Message):
+    chat_id = message.chat.id
 
-● 18+ sᴛɪᴄᴋᴇʀ ʙʟᴏᴄᴋ ᴍᴏʀᴇ sᴛɪᴄᴋᴇʀ ʙʟᴏᴄᴋ.
-
-● ᴅᴏɴ'ᴛ 50+ ᴡᴏʀᴅs ᴍsɢ sᴇɴᴅ.
-
-● ᴡɪᴛʜᴏᴜᴛ ᴀᴅᴍɪɴ ɴᴏᴛ ᴀᴅᴅ ᴏᴛʜᴇʀ ʙᴏᴛ.
-
-● ᴀɴʏ ʙᴀɴ ᴜsᴇʀ ʙᴏᴛ sᴇɴᴅ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴ ɪɴ ɢᴄ.
-
-● ᴀɴᴛɪ sᴘᴀᴍ + ᴀɴᴛɪ ʟɪɴᴋ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇ. 
-
-● ɴᴏɴᴇ ᴡᴇʟᴄᴏᴍᴇ , ɢᴏᴏᴅʙʏᴇ.
-"""
-
-# Menu Buttons
-def get_start_buttons():
-    return [
-        [InlineKeyboardButton("ᴀᴅᴅ ᴍᴇ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-        [InlineKeyboardButton("ᴏᴡɴᴇʀ", url="https://t.me/I_AM_SIDHU"), InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇ", url="https://t.me/HEROKUBIN_01")],
-        [InlineKeyboardButton("ʜᴇʟᴘ", callback_data="help")]
-    ]
-
-def get_help_buttons(is_direct_command=False):
-    if is_direct_command:
-        return [[InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="close")]]
+    if config.PRIVATE_BOT_MODE == str(True):
+        if not await is_served_private_chat(chat_id):
+            await message.reply_text(
+                "**This bot's private mode is enabled. Only my owner can use this. If you want to use it in your chat, ask my owner to authorize your chat.**"
+            )
+            return await client.leave_chat(chat_id)
     else:
-        return [[InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="back_to_start")]]
+        await add_served_chat(chat_id)
 
-# Utility functions
-def time_formatter(milliseconds: float) -> str:
-    seconds, milliseconds = divmod(milliseconds, 1000)
-    minutes, seconds = divmod(seconds, 60)
-    hours, minutes = divmod(minutes, 60)
-    return f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
+    for member in message.new_chat_members:
+        try:
+            if member.id == client.id:
+                try:
+                    groups_photo = await client.download_media(
+                        message.chat.photo.big_file_id, file_name=f"chatpp{chat_id}.png"
+                    )
+                    chat_photo = groups_photo if groups_photo else START_IMG_URL
+                except AttributeError:
+                    chat_photo = START_IMG_URL
 
-def size_formatter(bytes: int) -> str:
-    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
-        if bytes < 1024.0:
-            break
-        bytes /= 1024.0
-    return f"{bytes:.2f} {unit}"
+                out = start_pannel()
+                await message.reply_photo(
+                    photo=chat_photo,
+                    caption="Thanks for adding me to the group!",
+                    reply_markup=InlineKeyboardMarkup(out),
+                )
 
-# Command Handlers
-@app.on_message(filters.command("start"))
-async def start_command_handler(_, msg):
-    reply_markup = InlineKeyboardMarkup(get_start_buttons())
-    await msg.reply_photo(
-        photo="https://files.catbox.moe/x4d0nd.jpg",
-        caption=START_TEXT,
-        reply_markup=reply_markup
+            if member.id in config.OWNER_ID:
+                await message.reply_text(
+                    f"Welcome, {client.mention}! The owner {member.mention} has joined!"
+                )
+            elif member.id in SUDOERS:
+                await message.reply_text(
+                    f"Welcome, {client.mention}! Sudo user {member.mention} has joined!"
+                )
+        except Exception as e:
+            print(f"Error: {e}")
+
+@app.on_callback_query(filters.regex("go_to_start"))
+async def go_to_home(client, callback_query: CallbackQuery):
+    out = start_pannel()
+    await callback_query.message.edit_text(
+        text=f"Welcome back to the bot, {callback_query.message.from_user.mention}!",
+        reply_markup=InlineKeyboardMarkup(out),
     )
-
-@app.on_message(filters.command("help"))
-async def help_command_handler(_, msg):
-    reply_markup = InlineKeyboardMarkup(get_help_buttons(is_direct_command=True))
-    await msg.reply_photo(
-        photo="https://files.catbox.moe/x4d0nd.jpg",
-        caption=HELP_TEXT,
-        reply_markup=reply_markup
-    )
-
-# Callback Query Handlers
-@app.on_callback_query(filters.regex("help"))
-async def help_callback_handler(_, query: CallbackQuery):
-    buttons = get_help_buttons(is_direct_command=False)
-    reply_markup = InlineKeyboardMarkup(buttons)
-    await query.message.edit_caption(
-        caption=HELP_TEXT,
-        reply_markup=reply_markup
-    )
-
-@app.on_callback_query(filters.regex("back_to_start"))
-async def back_to_start_callback_handler(_, query: CallbackQuery):
-    await query.message.edit_caption(
-        caption=START_TEXT,
-        reply_markup=InlineKeyboardMarkup(get_start_buttons())
-    )
-
-@app.on_callback_query(filters.regex("close"))
-async def close_callback_handler(_, query: CallbackQuery):
-    await query.message.delete()
-
-@app.on_message(filters.command("ping"))
-async def activevc(_, message: Message):
-    uptime = time_formatter((time.time() - start_time) * 1000)
-    cpu = psutil.cpu_percent()
-    storage = psutil.disk_usage('/')
-    python_version = platform.python_version()
-
-    reply_text = (
-        f"➪ᴜᴘᴛɪᴍᴇ: {uptime}\n"
-        f"➪ᴄᴘᴜ: {cpu}%\n"
-        f"➪ꜱᴛᴏʀᴀɢᴇ: {size_formatter(storage.total)} [ᴛᴏᴛᴀʟ]\n"
-        f"➪{size_formatter(storage.used)} [ᴜsᴇᴅ]\n"
-        f"➪{size_formatter(storage.free)} [ғʀᴇᴇ]\n"
-        f"➪ᴘʙx ᴠᴇʀsɪᴏɴ: {python_version}"
-    )
-    await message.reply(reply_text, quote=True)
-
-
-# New Stats Command (Sudo-Only)
-@app.on_message(filters.command("stats") & SUDOERS)
-async def stats_command_handler(_, message: Message):
-    stats_text = (
-        f"📊 **ʙᴏᴛ sᴛᴀᴛs**\n"
-        f"➪ ᴛᴏᴛᴀʟ ɢʀᴏᴜᴘ {total_chats_count}\n"
-        f"➪ ᴛᴏᴛᴀʟ ᴜsᴇʀ {total_users_count}\n"
-    )
-    await message.reply(stats_text, quote=True)
