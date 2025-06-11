@@ -5,7 +5,7 @@ from Bad import app
 
 
 
-def start_panel(_):
+def start_pannel(_):
     buttons = [
         [
             InlineKeyboardButton(
