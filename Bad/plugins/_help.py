@@ -9,11 +9,13 @@ import config
 from config import BANNED_USERS, START_IMG_URL
 from Bad import HELPABLE, app
 from Bad.database.database import is_commanddelete_on
-from Bad.database.Buttons.help import private_help_panel, start_pannel
+from Bad.database.Buttons.help import private_help_panel, start_pannel  # <-- ADD THIS IMPORT
 
 # Command
 HELP_COMMAND = ["help", "hlp"]
 
+COLUMN_SIZE = 4 
+NUM_COLUMNS = 3 
 
 class EqInlineKeyboardButton(InlineKeyboardButton):
     def __eq__(self, other):
@@ -69,7 +71,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None, close: bool = False
                 ),
                 EqInlineKeyboardButton(
                     "ᴄʟᴏsᴇ" if close else "Bᴀᴄᴋ",
-                    callback_data="close" if close else "feature",
+                    callback_data="close" if close else "feature",  # 'feature' callback for Back
                 ),
                 EqInlineKeyboardButton(
                     "❯",
@@ -82,7 +84,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None, close: bool = False
             [
                 EqInlineKeyboardButton(
                     "ᴄʟᴏsᴇ" if close else "Bᴀᴄᴋ",
-                    callback_data="close" if close else "feature",
+                    callback_data="close" if close else "feature",  # 'feature' callback for Back
                 ),
             ]
         )
