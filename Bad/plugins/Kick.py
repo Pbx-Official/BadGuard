@@ -5,7 +5,7 @@ from pyrogram.errors.exceptions.bad_request_400 import (
     BadRequest
 )
 import requests
-from pbx import Owner
+from Pbx import Owner
 from Bad import app, LOGGER
 from Bad.misc import SUDOERS
 from pyrogram.errors import UserNotParticipant, PeerIdInvalid
