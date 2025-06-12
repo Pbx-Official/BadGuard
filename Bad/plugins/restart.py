@@ -12,7 +12,7 @@ from pyrogram import filters
 import config
 from Bad import app
 from Bad.misc import HAPP, SUDOERS, XCB
-from Bad.utils.database import (
+from Bad.database.database import (
     get_active_chats,
     remove_active_chat,
     remove_active_video_chat,
