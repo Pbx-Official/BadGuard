@@ -83,11 +83,6 @@ EXTRA_PLUGINS_FOLDER = getenv("EXTRA_PLUGINS_FOLDER", "plugins")
 # Time zone (india)
 TIME_ZONE = "Asia/Kolkata"
 
-#Start pic
-START_IMG_URL = getenv(
-    "START_IMG_URL",
-    "https://envs.sh/Yj2.jpg",
-)
 
 
 # Only  Links formats are  accepted for this Var value.
@@ -101,3 +96,31 @@ SUPPORT_GROUP = getenv(
 SUPPORT_CHAT = getenv(
     "SUPPORT_GROUP", "https://t.me/PBX_CHAT"
 )
+
+
+
+START_IMG_URL = random.choice(XYZ)
+GLOBAL_IMG_URL = random.choice(XYZ)
+
+STATS_IMG_URL = random.choice(XYZ)
+
+
+Zero = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+MARIN = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+RANDOMIMG = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+XYZ = [
+    "https://telegra.ph/file/aaccc060f01052d8b0c56.jpg",
+    "https://telegra.ph/file/f95ccd8e2a848997aaecb.jpg",
+]
