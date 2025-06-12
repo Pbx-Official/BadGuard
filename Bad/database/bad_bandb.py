@@ -1,5 +1,5 @@
 from pyrogram import filters
-from Bad.utils.admin_checkdb import admin_check
+from Bad.database.admin_checkdb import admin_check
 
 
 USE_AS_BOT = True
