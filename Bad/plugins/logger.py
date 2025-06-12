@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from Bad import app
 from Bad.misc import SUDOERS
-from Bad.database import add_off, add_on
+from Bad.database.database import add_off, add_on
 
 # Translation dictionary
 _ = {
