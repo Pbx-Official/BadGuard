@@ -9,7 +9,7 @@ import config
 from config import BANNED_USERS, START_IMG_URL
 from Bad import HELPABLE, app
 from Bad.database.database import is_commanddelete_on
-from Bad.database.Buttons.help import private_help_panel
+from Bad.database.Buttons.help import private_help_panel, start_pannel  # <-- ADD THIS IMPORT
 
 # Command
 HELP_COMMAND = ["help", "hlp"]
@@ -71,7 +71,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None, close: bool = False
                 ),
                 EqInlineKeyboardButton(
                     "ᴄʟᴏsᴇ" if close else "Bᴀᴄᴋ",
-                    callback_data="close" if close else "feature",
+                    callback_data="close" if close else "feature",  # 'feature' callback for Back
                 ),
                 EqInlineKeyboardButton(
                     "❯",
@@ -84,7 +84,7 @@ def paginate_modules(page_n, module_dict, prefix, chat=None, close: bool = False
             [
                 EqInlineKeyboardButton(
                     "ᴄʟᴏsᴇ" if close else "Bᴀᴄᴋ",
-                    callback_data="close" if close else "feature",
+                    callback_data="close" if close else "feature",  # 'feature' callback for Back
                 ),
             ]
         )
@@ -140,7 +140,7 @@ async def help_parser(name, keyboard=None):
     return keyboard
 
 
-@app.on_callback_query(filters.regex(r"help_(.*?)"))
+@app.on_callback_query(filters.regex(r"help_(.*?)|feature"))  # <-- ADD 'feature' TO REGEX
 async def help_button(client, query):
     home_match = re.match(r"help_home\((.+?)\)", query.data)
     mod_match = re.match(r"help_module\((.+?),(.+?)\)", query.data)
@@ -149,6 +149,17 @@ async def help_button(client, query):
     back_match = re.match(r"help_back\((\d+)\)", query.data)
     create_match = re.match(r"help_create", query.data)
     top_text = "Here is the help menu."
+
+    # --- ADD THIS BLOCK FOR 'feature' CALLBACK ---
+    if query.data == "feature":
+        keyboard = InlineKeyboardMarkup(start_pannel(0))
+        await query.message.edit(
+            text="Welcome to the main menu.",
+            reply_markup=keyboard,
+            disable_web_page_preview=True,
+        )
+        await client.answer_callback_query(query.id)
+        return
 
     if mod_match:
         module = mod_match.group(1)
@@ -215,4 +226,3 @@ async def help_button(client, query):
         )
 
     await client.answer_callback_query(query.id)
-
