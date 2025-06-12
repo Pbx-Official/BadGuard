@@ -23,7 +23,7 @@ from Bad.database.database import (
     is_served_private_chat,
 )
 from Bad.database.Buttons import alive_panel, start_pannel
-from .help import paginate_modules
+from ._help import paginate_modules
 
 STICKER = [
     "CAACAgUAAx0CepnpNQABATUjZypavrymDoERINkF-M3u9JDQ6K8AAhoDAAIOnnlVpyrYiDnVgWYeBA",
