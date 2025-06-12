@@ -3,7 +3,7 @@ import time
 import psutil
 
 from Bad.misc import _boot_
-from Bad.database.formatters import get_readable_time
+from Bad.database.formattersdb import get_readable_time
 
 
 async def bot_sys_stats():
