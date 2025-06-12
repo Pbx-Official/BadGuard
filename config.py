@@ -14,6 +14,27 @@ TEMP_DB_FOLDER = "tempdb"
 LOG = 2
 LOG_FILE_NAME = "BADlogs.txt"
 
+Zero = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+MARIN = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+RANDOMIMG = [
+    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
+    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
+]
+
+XYZ = [
+    "https://telegra.ph/file/aaccc060f01052d8b0c56.jpg",
+    "https://telegra.ph/file/f95ccd8e2a848997aaecb.jpg",
+]
+
+
 
 # ________________________________________________________________________________#
 # Get it from my.telegram.org
@@ -104,23 +125,3 @@ GLOBAL_IMG_URL = random.choice(XYZ)
 
 STATS_IMG_URL = random.choice(XYZ)
 
-
-Zero = [
-    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
-    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
-]
-
-MARIN = [
-    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
-    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
-]
-
-RANDOMIMG = [
-    "https://telegra.ph/file/59b9696f98fc9801fb8a3.jpg",
-    "https://telegra.ph/file/40ee2fea655fdaccb5676.jpg",
-]
-
-XYZ = [
-    "https://telegra.ph/file/aaccc060f01052d8b0c56.jpg",
-    "https://telegra.ph/file/f95ccd8e2a848997aaecb.jpg",
-]
