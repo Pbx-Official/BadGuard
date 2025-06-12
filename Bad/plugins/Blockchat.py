@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from Bad import app
 from Bad.misc import SUDOERS
-from Bad.database import blacklist_chat, blacklisted_chats, whitelist_chat
+from Bad.database.database import blacklist_chat, blacklisted_chats, whitelist_chat
 from config import BANNED_USERS
 
 # Translation dictionary
