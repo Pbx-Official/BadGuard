@@ -68,26 +68,21 @@ async def userdel(client, message: Message):
         await message.reply_text(_["general_2"].format(str(e)))
 
 @app.on_message(filters.command(["blocked", "blockedusers", "blusers"]) & SUDOERS)
-async def sudoers_list(client, message: Message):
+async def sudoers_list(client, message: Message, _):
     if not BANNED_USERS:
         return await message.reply_text(_["block_5"])
-        
     mystic = await message.reply_text(_["block_6"])
     msg = _["block_7"]
     count = 0
-    
-    for user_id in BANNED_USERS:
+    for users in BANNED_USERS:
         try:
-            user = await app.get_users(user_id)
-            user_name = user.first_name if not user.mention else user.mention
+            user = await app.get_users(users)
+            user = user.first_name if not user.mention else user.mention
             count += 1
-            msg += f"{count}➤ {user_name}\n"
-        except Exception:
+        except:
             continue
-            
-        if count == 0:
-            return await mystic.edit_text(_["block_5"])
+        msg += f"{count}➤ {user}\n"
+    if count == 0:
+        return await mystic.edit_text(_["block_5"])
+    else:
         return await mystic.edit_text(msg)
-        
-    except Exception as e:
-        await message.reply_text(_["general_2"].format(str(e)))
