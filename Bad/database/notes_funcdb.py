@@ -5,9 +5,9 @@ import re
 import asyncio
 from pyrogram import client, filters
 from Bad import app
-from Bad.utils.notesdb import GetNote
+from Bad.database.notesdb import GetNote
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from Bad.utils.msg_typesdb import button_markdown_parser
+from Bad.database.msg_typesdb import button_markdown_parser
 
 class NoteTypeMap(Enum):
     text = auto()
