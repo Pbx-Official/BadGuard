@@ -84,7 +84,7 @@ GIT_TOKEN = getenv(
 
 EXTRA_PLUGINS = getenv(
     "EXTRA_PLUGINS",
-    "Fasle",
+    "True",
 )
 
 # Fill True if you want to load extra plugins
@@ -92,7 +92,7 @@ EXTRA_PLUGINS = getenv(
 
 EXTRA_PLUGINS_REPO = getenv(
     "EXTRA_PLUGINS_REPO",
-    "https://github.com",
+    "https://github.com/Pbx-Official/BadGuardX",
 )
 # Fill here the external plugins repo where plugins that you want to load
 
