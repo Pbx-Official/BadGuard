@@ -44,7 +44,7 @@ BOT_USERNAME ="Broken_Bot"
 
 # ________________________________________________________________________________#
 ## Get it from @Botfather in Telegram.
-BOT_TOKEN = "7436017266:AAH0gZpOKyOXK4Vx-bE8hNC66ikODZxte0k"
+BOT_TOKEN = "7768989658:AAEJykx5pHi4x0SZKsgO_xInemtB6axRdps"
 
 # ________________________________________________________________________________#
 # Get it from http://dashboard.heroku.com/account
