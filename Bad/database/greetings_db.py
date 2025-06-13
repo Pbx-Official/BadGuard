@@ -1,6 +1,6 @@
 from threading import RLock
 
-from Bad import LOGGER
+from .logging import LOGGER
 from Bad.database import MongoDB
 
 INSERTION_LOCK = RLock()
