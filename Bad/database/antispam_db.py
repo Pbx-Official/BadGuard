@@ -2,7 +2,7 @@ from datetime import datetime
 from threading import RLock
 
 from Bad import TIME_ZONE as TZ
-from Bad.database.welcome import MongoDB
+from Bad.database import MongoDB
 
 INSERTION_LOCK = RLock()
 ANTISPAM_BANNED = set()
