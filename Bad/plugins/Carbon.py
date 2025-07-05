@@ -34,3 +34,11 @@ async def carbon_func(_, message):
     )
     await m.delete()
     carbon.close()
+
+__MODULE__ = "ᴄᴀʀʙᴏɴ"
+__HELP__ = """ 
+
+## ᴄᴀʀʙᴏɴ
+» `/carbon` <text or reply> : ᴄʀᴇᴀᴛᴇ ᴀ ʙᴇᴀᴜᴛɪꜰᴜʟ ᴄᴀʀʙᴏɴ.ɴᴏᴡ ꜱɴɪᴘᴘᴇᴛ ꜰʀᴏᴍ ᴛᴇxᴛ
+
+"""
