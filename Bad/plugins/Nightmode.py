@@ -121,5 +121,14 @@ async def nightmode_scheduler():
 
 asyncio.create_task(nightmode_scheduler())
 
-    
-    
+
+__MODULE__ = "ɴɪɢʜᴛᴍᴏᴅᴇ"
+__HELP__ = """ 
+
+## ɴɪɢʜᴛᴍᴏᴅᴇ 🌃
+
+» `/nightmode <enable|disable>` : ᴇɴᴀʙʟᴇ ᴛᴏ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴄʟᴏꜱᴇ ɢʀᴏᴜᴘ ᴀᴛ 12ᴀᴍ ᴀɴᴅ ʀᴇᴏᴘᴇɴ ᴀᴛ 6ᴀᴍ ᴅᴀɪʟʏ
+
+❖ ᴜꜱᴇ ꜰᴏʀ ᴛᴇᴍᴘᴏʀᴀʀʏ ɢʀᴏᴜᴘ ʟᴏᴄᴋ ᴅᴜʀɪɴɢ ɴɪɢʜᴛ ʜᴏᴜʀꜱ
+
+"""
