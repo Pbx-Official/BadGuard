@@ -87,3 +87,19 @@ async def anti_file_filter(_, message: Message):
             await message.reply_text(warning)
     except Exception as e:
         print("File Deletion Error:", e)
+
+
+__MODULE__ = "ᴀɴᴛɪ ʟɪɴᴋ"
+__HELP__ = """
+**<u>ᴀɴᴛɪ-ʟɪɴᴋ 🚫</u>**
+» `/antilink on` - ᴅᴇʟᴇᴛᴇ ᴍᴇssᴀɢᴇs ᴄᴏɴᴛᴀɪɴɪɴɢ ʟɪɴᴋs.
+» `/antilink off` - ᴅɪsᴀʙʟᴇ ᴀɴᴛɪ-ʟɪɴᴋ ꜰɪʟᴛᴇʀ.
+
+**<u>ᴀɴᴛɪ-ꜰɪʟᴇ 📂</u>**
+» `/antifile on` - ʙʟᴏᴄᴋ ᴀʟʟ ᴜɴᴡᴀɴᴛᴇᴅ ꜰɪʟᴇꜱ (ᴇxᴄᴇᴘᴛ ɪᴍᴀɢᴇꜱ, ᴠɪᴅᴇᴏꜱ, ᴀᴜᴅɪᴏ).
+» `/antifile off` - ᴀʟʟᴏᴡ ᴀʟʟ ꜰɪʟᴇ ᴛʏᴘᴇꜱ.
+
+**⛔️ Only group admins can use these commands.**
+
+➥ All violations will automatically result in message deletion + warning.
+"""
