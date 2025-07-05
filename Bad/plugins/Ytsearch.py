@@ -26,3 +26,13 @@ async def ytsearch(_, message: Message):
     except Exception as e:
         await m.edit(str(e))
 
+
+__MODULE__ = "ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ"
+__HELP__ = """
+
+## ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ 🔎
+
+» `/ytsearch <query>` : ꜱᴇᴀʀᴄʜ ᴀɴʏᴛʜɪɴɢ ᴏɴ ʏᴏᴜᴛᴜʙᴇ ᴀɴᴅ ɢᴇᴛ ᴛᴏᴘ ʀᴇꜱᴜʟᴛꜱ.
+
+❖ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ᴡɪʟʟ ꜰᴇᴛᴄʜ ᴛɪᴛʟᴇ, ᴛʜᴜᴍʙɴᴀɪʟ, ᴀɴᴅ ʟɪɴᴋꜱ ᴏꜰ ᴛᴏᴘ ᴠɪᴅᴇᴏꜱ.
+"""
