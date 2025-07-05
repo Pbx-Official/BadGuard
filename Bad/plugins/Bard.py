@@ -77,3 +77,13 @@ async def bardai(bot, message):
                 await app.send_message(LOG_GROUP_ID, f"An error occurred in bard: {str(e)}")
     except Exception as e:
         await app.send_message(LOG_GROUP_ID, f"An unhandled exception bard: {str(e)}")
+
+__MODULE__ = "ᴀɪ"
+__HELP__ = """ 
+
+##  ᴀʀᴛɪꜰɪᴄɪᴀʟ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ
+» `/ai` <query> : ᴀꜱᴋ ᴀɴʏᴛʜɪɴɢ ᴛᴏ ᴄʜᴀᴛɢᴘᴛ
+» `/bard` <query> : ɢᴇᴛ ᴀɴꜱᴡᴇʀꜱ ꜰʀᴏᴍ ɢᴏᴏɢʟᴇ ᴀɪ (ɢᴇᴍɪɴɪ)
+» `/gemini` <query> : ᴀʟꜱᴏ ᴜꜱᴇꜱ ɢᴏᴏɢʟᴇ ᴀɪ ᴛᴏ ʀᴇᴘʟʏ ᴛᴏ ʏᴏᴜʀ ǫᴜᴇʀɪᴇꜱ
+
+"""
