@@ -89,3 +89,12 @@ async def randomquotes(client, message):
     await asyncio.sleep(0.8)
    # await g.delete()
     await g.edit(random.choice(quotesquotes))
+
+__MODULE__ = "Qᴜᴏᴛᴇꜱ"
+__HELP__ = """ 
+
+## Qᴜᴏᴛᴇꜱ 💬
+
+» `/quote` : ɢᴇᴛ ᴀ ʀᴀɴᴅᴏᴍ ᴍᴏᴛɪᴠᴀᴛɪᴏɴᴀʟ Qᴜᴏᴛᴇ ᴛᴏ ʟɪꜰᴛ ʏᴏᴜʀ ꜱᴘɪʀɪᴛꜱ ✨
+
+"""
