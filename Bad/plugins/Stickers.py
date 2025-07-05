@@ -387,3 +387,17 @@ async def generate_sticker(client, message):
             await message.reply_text(f"ᴇʀʀᴏʀ: {e}")
     else:
         await message.reply_text("ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ sᴛɪᴄᴋᴇʀ ɪᴅ ᴀғᴛᴇʀ /sᴛᴋʀғɪɴᴅ ᴄᴏᴍᴍᴀɴᴅ.")
+
+
+__MODULE__ = "ꜱᴛɪᴄᴋᴇʀꜱ"
+__HELP__ = """ 
+
+## ꜱᴛɪᴄᴋᴇʀꜱ 🎭
+
+» `/stickerid` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ꜱᴛɪᴄᴋᴇʀ ᴛᴏ ɢᴇᴛ ɪᴛꜱ ꜰɪʟᴇ ɪᴅ
+
+» `/kang` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ꜱᴛɪᴄᴋᴇʀ/ᴘʜᴏᴛᴏ ᴛᴏ ᴀᴅᴅ ɪᴛ ᴛᴏ ʏᴏᴜʀ ꜱᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ
+
+» `/packkang` : ᴋᴀɴɢ ᴀ ꜰᴜʟʟ ꜱᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ ᴀᴛ ᴏɴᴄᴇ
+
+"""
