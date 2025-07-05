@@ -161,3 +161,13 @@ async def userinfo(_, message: Message):
                 os.remove(photo)
         except Exception as e:
             await message.reply_text(str(e))
+
+__MODULE__ = "ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ"
+__HELP__ = """ 
+
+## ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ℹ️
+
+» `/info` : 
+ɢᴇᴛ ᴅᴇᴛᴀɪʟᴇᴅ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀ ᴜꜱᴇʀ ʙʏ ʀᴇᴘʟʏɪɴɢ ᴛᴏ ᴛʜᴇɪʀ ᴍᴇꜱꜱᴀɢᴇ ᴏʀ ᴘᴀꜱꜱɪɴɢ ᴛʜᴇɪʀ ᴜꜱᴇʀɴᴀᴍᴇ/ɪᴅ.
+
+"""
