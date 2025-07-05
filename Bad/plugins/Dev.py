@@ -209,3 +209,21 @@ async def shellrunner(_, message: Message):
     else:
         await edit_or_reply(message, text="<b>OUTPUT :</b>\n<code>None</code>")
     await message.stop_propagation()
+
+
+__MODULE__ = "ᴅᴇᴠᴇʟᴏᴘᴇʀ"
+__HELP__ = """ 
+
+## ᴅᴇᴠᴇʟᴏᴘᴇʀ ⚙️
+
+» `/eval` : ʀᴜɴ ᴘʏᴛʜᴏɴ ᴄᴏᴅᴇ ɪɴ ʀᴇᴀʟ-ᴛɪᴍᴇ
+» `/sh` : ᴇxᴇᴄᴜᴛᴇ ʟɪɴᴜx ꜱʜᴇʟʟ ᴄᴏᴍᴍᴀɴᴅꜱ
+» `/broadcast` : ꜱᴇɴᴅ ᴀ ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴛᴏ ᴀʟʟ ᴄʜᴀᴛꜱ
+» `/vars` : ᴠɪᴇᴡ ᴄᴏɴꜰɪɢ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ ᴠᴀʀɪᴀʙʟᴇꜱ
+» `/logs` : ɢᴇᴛ ᴛʜᴇ ʙᴏᴛ ʟᴏɢꜱ
+» `/addsudo` : ᴀᴅᴅ ᴀ ᴜꜱᴇʀ ᴛᴏ ꜱᴜᴅᴏ ʟɪꜱᴛ
+» `/rmsudo` : ʀᴇᴍᴏᴠᴇ ᴀ ᴜꜱᴇʀ ꜰʀᴏᴍ ꜱᴜᴅᴏ ʟɪꜱᴛ
+
+**ᴏɴʟʏ ꜰᴏʀ ᴅᴇᴠs / ꜱᴜᴅᴏ ᴜꜱᴇʀꜱ**
+
+"""
