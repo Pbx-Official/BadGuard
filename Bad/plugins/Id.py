@@ -54,3 +54,18 @@ async def get_id(client, message):
                 )
     except Exception:
         await message.reply("An error occurred while getting the ID.")
+
+
+__MODULE__ = "ɪᴅ ғɪɴᴅᴇʀ"
+__HELP__ = """
+## ɪᴅ ғɪɴᴅᴇʀ 🆔
+
+» `/id` : 
+ɢᴇᴛ ᴛʜᴇ ɪᴅ ᴏꜰ ᴀ ᴜꜱᴇʀ, ᴄʜᴀᴛ, ꜰᴏʀᴡᴀʀᴅᴇᴅ ᴄʜᴀɴɴᴇʟ, ᴏʀ ꜱᴛɪᴄᴋᴇʀ ꜱᴇɴᴅᴇʀ.
+
+✅ ᴡᴏʀᴋꜱ ɪɴ:
+• ʀᴇᴘʟɪᴇᴅ ᴜꜱᴇʀꜱ
+• ꜰᴏʀᴡᴀʀᴅᴇᴅ ᴍᴇꜱꜱᴀɢᴇꜱ
+• ɢʀᴏᴜᴘ / ᴄʜᴀɴɴᴇʟ / ᴘᴇʀꜱᴏɴᴀʟ ᴄʜᴀᴛꜱ
+• ꜱᴛɪᴄᴋᴇʀ ᴍᴇꜱꜱᴀɢᴇꜱ
+"""
