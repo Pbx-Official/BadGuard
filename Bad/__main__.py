@@ -20,28 +20,33 @@ async def init():
         users = await get_banned_users()
         for user_id in users:
             BANNED_USERS.add(user_id)
-    except:
-        pass
+    except Exception as e:
+        LOGGER(__name__).error(f"Error loading banned users: {e}")
+    
     await app.start()
+    
+    loaded_plugins = []
     for all_module in ALL_MODULES:
-        imported_module = importlib.import_module(all_module)
-
-        if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
-            if hasattr(imported_module, "__HELP__") and imported_module.__HELP__:
-                HELPABLE[imported_module.__MODULE__.lower()] = imported_module
-    LOGGER("Bad.plugins").info("Successfully Imported All Modules ")
+        try:
+            imported_module = importlib.import_module(all_module)
+            if hasattr(imported_module, "__MODULE__") and imported_module.__MODULE__:
+                loaded_plugins.append(imported_module.__MODULE__)
+                if hasattr(imported_module, "__HELP__") and imported_module.__HELP__:
+                    HELPABLE[imported_module.__MODULE__.lower()] = imported_module
+        except Exception as e:
+            LOGGER(__name__).error(f"Error importing module {all_module}: {e}")
+    
+    LOGGER("Bad.plugins").info(f"Successfully Imported Modules: {', '.join(loaded_plugins)}")
     
     await Bad.start()
     await application.run_polling()
     await application.start()
-    LOGGER("Bad").info("bot start")
+    LOGGER("Bad").info("Bot started")
     await idle()
     await app.stop()
     await Bad.disconnect()
     await application.shutdown()
-    await userbot.stop()
     LOGGER("Bad").info("Stopping Bot...")
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(init())
-  
