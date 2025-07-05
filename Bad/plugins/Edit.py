@@ -65,3 +65,17 @@ app_instance = application
 app_instance.add_handler(CommandHandler("edittext", toggle_edittext))
 app_instance.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_long_message))
 app_instance.add_handler(MessageHandler(filters.ALL & filters.UpdateType.EDITED, handle_edited_message))
+
+
+__MODULE__ = "ᴇᴅɪᴛᴛᴇxᴛ"
+__HELP__ = """ 
+
+## ᴇᴅɪᴛᴛᴇxᴛ 📝
+
+» `/edittext on` : ᴇɴᴀʙʟᴇꜱ ᴅᴇʟᴇᴛɪᴏɴ ᴏꜰ ᴇᴅɪᴛᴇᴅ ᴍᴇꜱꜱᴀɢᴇꜱ ᴀɴᴅ ʟᴏɴɢ ᴛᴇxᴛꜱ
+» `/edittext off` : ᴅɪꜱᴀʙʟᴇꜱ ᴀᴜᴛᴏ ᴅᴇʟᴇᴛɪᴏɴ ᴏꜰ ᴇᴅɪᴛᴇᴅ ᴏʀ ʟᴏɴɢ ᴍᴇꜱꜱᴀɢᴇꜱ
+
+• ᴇᴅɪᴛᴇᴅ ᴍᴇꜱꜱᴀɢᴇꜱ ᴀʀᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ᴡɪᴛʜ ᴀ ᴡᴀʀɴɪɴɢ.
+• ᴍᴇꜱꜱᴀɢᴇꜱ ᴄᴏɴᴛᴀɪɴɪɴɢ ᴍᴏʀᴇ ᴛʜᴀɴ 60 ᴡᴏʀᴅꜱ ᴀʀᴇ ʀᴇᴍᴏᴠᴇᴅ ᴛᴏ ᴘʀᴇᴠᴇɴᴛ ꜱᴘᴀᴍ.
+
+"""
