@@ -12,6 +12,17 @@ LINK_REGEX = r"(https?://\S+|www\.\S+|\S+\.(com|in|net|org|info|xyz))"
 anti_link_enabled = defaultdict(lambda: False)
 anti_file_enabled = defaultdict(lambda: False)
 
+# Smallcap conversion dictionary
+SMALLCAPS = {
+    'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ',
+    'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ',
+    'o': 'ᴏ', 'p': 'ᴘ', 'q': 'Q', 'r': 'ʀ', 's': 's', 't': 'ᴛ', 'u': 'ᴜ',
+    'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x', 'y': 'ʏ', 'z': 'ᴢ'
+}
+
+def to_smallcaps(text):
+    return ''.join(SMALLCAPS.get(c.lower(), c) for c in text)
+
 # Admin check
 async def is_admin(client, message: Message) -> bool:
     try:
@@ -24,20 +35,20 @@ async def is_admin(client, message: Message) -> bool:
 @app.on_message(filters.command("antilink", prefixes="/") & filters.group)
 async def toggle_anti_link(client, message: Message):
     if not await is_admin(client, message):
-        return await message.reply_text("🚫 Only admins can toggle anti-link.")
+        return await message.reply_text(to_smallcaps("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴛᴏɢɢʟᴇ ᴀɴᴛɪ-ʟɪɴᴋ."))
     
     if len(message.command) < 2:
-        return await message.reply_text("Usage: `/antilink on` or `/antilink off`")
+        return await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antilink on` ᴏʀ `/antilink off`"))
 
     arg = message.command[1].lower()
     if arg == "on":
         anti_link_enabled[message.chat.id] = True
-        await message.reply_text("✅ Anti-Link has been **enabled**.")
+        await message.reply_text(to_smallcaps("✅ ᴀɴᴛɪ-ʟɪɴᴋ ʜᴀꜱ ʙᴇᴇɴ **ᴇɴᴀʙʟᴇᴅ**."))
     elif arg == "off":
         anti_link_enabled[message.chat.id] = False
-        await message.reply_text("❌ Anti-Link has been **disabled**.")
+        await message.reply_text(to_smallcaps("❌ ᴀɴᴛɪ-ʟɪɴᴋ ʜᴀꜱ ʙᴇᴇɴ **ᴅɪꜱᴀʙʟᴇᴅ**."))
     else:
-        await message.reply_text("Usage: `/antilink on` or `/antilink off`")
+        await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antilink on` ᴏʀ `/antilink off`"))
 
 # Anti-Link Filter
 @app.on_message(filters.group & filters.text & ~filters.private)
@@ -48,29 +59,29 @@ async def anti_link_filter(_, message: Message):
     if re.search(LINK_REGEX, message.text.lower()):
         try:
             await message.delete()
-            warning = f"{message.from_user.mention} ⚠️ ʟɪɴᴋꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."
+            warning = to_smallcaps(f"{message.from_user.mention} ⚠️ ʟɪɴᴋꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ.")
             await message.reply_text(warning)
         except Exception as e:
-            print("Link Deletion Error:", e)
+            print(f"Link Deletion Error in chat {message.chat.id}: {e}")
 
 # Enable/Disable Anti-File
 @app.on_message(filters.command("antifile", prefixes="/") & filters.group)
 async def toggle_anti_file(client, message: Message):
     if not await is_admin(client, message):
-        return await message.reply_text("🚫 Only admins can toggle anti-file.")
+        return await message.reply_text(to_smallcaps("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴛᴏɢɢʟᴇ ᴀɴᴛɪ-ꜰɪʟᴇ."))
     
     if len(message.command) < 2:
-        return await message.reply_text("Usage: `/antifile on` or `/antifile off`")
+        return await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antifile on` ᴏʀ `/antifile off`"))
 
     arg = message.command[1].lower()
     if arg == "on":
         anti_file_enabled[message.chat.id] = True
-        await message.reply_text("✅ Anti-File has been **enabled**.")
+        await message.reply_text(to_smallcaps("✅ ᴀɴᴛɪ-ꜰɪʟᴇ ʜᴀꜱ ʙᴇᴇɴ **ᴇɴᴀʙʟᴇᴅ**."))
     elif arg == "off":
         anti_file_enabled[message.chat.id] = False
-        await message.reply_text("❌ Anti-File has been **disabled**.")
+        await message.reply_text(to_smallcaps("❌ ᴀɴᴛɪ-ꜰɪʟᴇ ʜᴀꜱ ʙᴇᴇɴ **ᴅɪꜱᴀʙʟᴇᴅ**."))
     else:
-        await message.reply_text("Usage: `/antifile on` or `/antifile off`")
+        await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antifile on` ᴏʀ `/antifile off`"))
 
 # Anti-File Filter
 @app.on_message(filters.group & filters.document)
@@ -83,23 +94,22 @@ async def anti_file_filter(_, message: Message):
         file_name = message.document.file_name.lower()
         if not file_name.endswith(allowed_extensions):
             await message.delete()
-            warning = f"{message.from_user.mention} ⚠️ ꜰɪʟᴇꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."
+            warning = to_smallcaps(f"{message.from_user.mention} ⚠️ ꜰɪʟᴇꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ.")
             await message.reply_text(warning)
     except Exception as e:
-        print("File Deletion Error:", e)
+        print(f"File Deletion Error in chat {message.chat.id}: {e}")
 
-
-__MODULE__ = "ᴀɴᴛɪ ʟɪɴᴋ"
+__MODULE__ = to_smallcaps("ᴀɴᴛɪ ʟɪɴᴋ")
 __HELP__ = """
 **<u>ᴀɴᴛɪ-ʟɪɴᴋ 🚫</u>**
-» `/antilink on` - ᴅᴇʟᴇᴛᴇ ᴍᴇssᴀɢᴇs ᴄᴏɴᴛᴀɪɴɪɴɢ ʟɪɴᴋs.
-» `/antilink off` - ᴅɪsᴀʙʟᴇ ᴀɴᴛɪ-ʟɪɴᴋ ꜰɪʟᴛᴇʀ.
+» `/antilink on` - ᴅᴇʟᴇᴛᴇ ᴍᴇssᴀɢᴇꜱ ᴄᴏɴᴛᴀɪɴɪɴɢ ʟɪɴᴋꜱ.
+» `/antilink off` - ᴅɪꜱᴀʙʟᴇ ᴀɴᴛɪ-ʟɪɴᴋ ꜰɪʟᴛᴇʀ.
 
 **<u>ᴀɴᴛɪ-ꜰɪʟᴇ 📂</u>**
 » `/antifile on` - ʙʟᴏᴄᴋ ᴀʟʟ ᴜɴᴡᴀɴᴛᴇᴅ ꜰɪʟᴇꜱ (ᴇxᴄᴇᴘᴛ ɪᴍᴀɢᴇꜱ, ᴠɪᴅᴇᴏꜱ, ᴀᴜᴅɪᴏ).
 » `/antifile off` - ᴀʟʟᴏᴡ ᴀʟʟ ꜰɪʟᴇ ᴛʏᴘᴇꜱ.
 
-**⛔️ Only group admins can use these commands.**
+**⛔️ ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇꜱᴇ ᴄᴏᴍᴍᴀɴᴅꜱ.**
 
-➥ All violations will automatically result in message deletion + warning.
+➥ ᴀʟʟ ᴠɪᴏʟᴀᴛɪᴏɴꜱ ᴡɪʟʟ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ʀᴇꜱᴜʟᴛ ɪɴ ᴍᴇꜱꜱᴀɢᴇ ᴅᴇʟᴇᴛɪᴏɴ + ᴡᴀʀɴɪɴɢ.
 """
