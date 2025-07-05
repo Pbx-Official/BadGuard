@@ -14,7 +14,7 @@ from Bad.database.Buttons.help import private_help_panel, start_pannel  # <-- AD
 # Command
 HELP_COMMAND = ["help", "hlp"]
 
-COLUMN_SIZE = 6
+COLUMN_SIZE = 5
 NUM_COLUMNS = 3 
 
 class EqInlineKeyboardButton(InlineKeyboardButton):
