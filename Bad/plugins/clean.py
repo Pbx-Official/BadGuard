@@ -18,3 +18,13 @@ async def clean(_, message):
     os.mkdir(dir1)
     await A.edit("ᴛᴇᴍᴘ ᴅɪʀᴇᴄᴛᴏʀɪᴇs ᴀʀᴇ ᴄʟᴇᴀɴᴇᴅ")
   
+
+__MODULE__ = "ᴄʟᴇᴀɴᴇʀ"
+__HELP__ = """
+
+## ᴄʟᴇᴀɴᴇʀ 🧹
+
+» `/clean` : ᴄʟᴇᴀɴ ᴛʜᴇ ᴛᴇᴍᴘ ᴅɪʀᴇᴄᴛᴏʀɪᴇꜱ (downloads & cache).
+
+❖ ᴏɴʟʏ ꜱᴜᴅᴏ ᴜꜱᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.
+"""
