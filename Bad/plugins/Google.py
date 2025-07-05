@@ -7,7 +7,7 @@ from Bad import app
 @app.on_message(filters.command(["google"]))
 async def google(bot, message):
     if len(message.command) < 2 and not message.reply_to_message:
-        await message.reply_text("**Example:**\n\n`/google who is zero two`")
+        await message.reply_text("**Example:**\n\n`/google Badhacker98 GitHub`")
         return
 
     if message.reply_to_message and message.reply_to_message.text:
