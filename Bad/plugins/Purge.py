@@ -103,6 +103,39 @@ async def del_msg(app: app, msg: Message):
         await msg.reply_text(text="**ᴡʜᴀᴛ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴇʟᴇᴛᴇ.**")
         return
 
+@app.on_message(filters.command("purge"))
+async def purge_command_handler(app: app, msg: Message):
+    if msg.chat.type != ChatType.SUPERGROUP:
+        return await msg.reply_text("**ɪ ᴄᴀɴ ᴏɴʟʏ ᴘᴜʀɢᴇ ɪɴ sᴜᴘᴇʀɢʀᴏᴜᴘs.**")
+
+    user = msg.from_user
+    member = await msg.chat.get_member(user.id)
+    if member.status not in [ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.OWNER]:
+        return
+
+    # /purge -me 50
+    if len(msg.command) >= 2 and msg.command[1] == "-me":
+        if len(msg.command) < 3 or not msg.command[2].isdigit():
+            return await msg.reply_text("**ᴘʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ɴᴜᴍʙᴇʀ.**\nExample: `/purge -me 50`")
+
+        count = int(msg.command[2])
+        if count > 500:
+            return await msg.reply_text("**ʟɪᴍɪᴛ ɪs 500 ᴍᴇssᴀɢᴇs.**")
+
+        deleted = 0
+        async for m in app.get_chat_history(msg.chat.id, limit=count):
+            if m.from_user and m.from_user.id == user.id:
+                try:
+                    await app.delete_messages(msg.chat.id, m.id)
+                    deleted += 1
+                except:
+                    continue
+
+        confirm = await msg.reply_text(f"✅ ᴅᴇʟᴇᴛᴇᴅ <b>{deleted}</b> ᴏᴜᴛ ᴏꜰ <b>{count}</b> ʏᴏᴜʀ ᴍᴇssᴀɢᴇs.")
+        await sleep(3)
+        return await confirm.delete()
+        
+
 __MODULE__ = "ᴘᴜʀɢᴇ"
 __HELP__ = """ 
 
@@ -110,12 +143,15 @@ __HELP__ = """
 
 » `/purge` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴀʟʟ ᴍᴇꜱꜱᴀɢᴇꜱ ᴀꜰᴛᴇʀ ɪᴛ, ɪɴᴄʟᴜᴅɪɴɢ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴏɴᴇ.
 
-» `/spurge` : ꜱᴀᴍᴇ ᴀꜱ `/purge`, ʙᴜᴛ ᴅᴏᴇꜱ ɴᴏᴛ ꜱᴇɴᴅ ᴀɴʏ ꜰɪɴᴀʟ ʀᴇᴘʟʏ ᴍᴇꜱꜱᴀɢᴇ. ᴄʟᴇᴀɴᴇʀ ᴠᴇʀꜱɪᴏɴ ꜰᴏʀ ꜱᴛᴇᴀʟᴛʜ ᴘᴜʀɢɪɴɢ.
+» `/spurge` : ꜱɪʟᴇɴᴛ ᴘᴜʀɢᴇ ᴠᴇʀꜱɪᴏɴ — ɴᴏ ꜀ᴏɴꜰɪʀᴍᴀᴛɪᴏɴ ᴍᴇꜱꜱᴀɢᴇ
 
-» `/del` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇʟᴇᴛᴇ ɪᴛ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ᴛʀɪɢɢᴇʀ.
+» `/del` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇʟᴇᴛᴇ ɪᴛ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ
+
+» `/purge -me <count>` : ᴅᴇʟᴇᴛᴇ ʏᴏᴜʀ ʟᴀꜱᴛ <count> ᴍᴇꜱꜱᴀɢᴇꜱ.  
+Example: `/purge -me 50`
 
 ❖ ʙᴏᴛ ᴍᴜꜱᴛ ʙᴇ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴅᴇʟᴇᴛᴇ ᴍᴇꜱꜱᴀɢᴇ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ  
-❖ ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴏʀ ᴏᴡɴᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇꜱᴇ ᴄᴏᴍᴍᴀɴᴅꜱ  
-❖ ᴡᴏʀᴋꜱ ᴏɴʟʏ ɪɴ ꜱᴜᴘᴇʀɢʀᴏᴜᴘꜱ  
+❖ ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴏʀ ᴏᴡɴᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴍᴏꜱᴛ ᴘᴜʀɢᴇ ᴄᴏᴍᴍᴀɴᴅꜱ  
+❖ `/purge -me` ᴄᴀɴ ʙᴇ ᴜꜱᴇᴅ ʙʏ ᴀɴʏ ᴜꜱᴇʀ
 
 """
