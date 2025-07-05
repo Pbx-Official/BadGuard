@@ -6,7 +6,7 @@ from Bad import app
 import os
 from config import OWNER_ID
 from Bad.misc import SUDOERS
-from Bad.utils.pastebin import BADbin
+from Bad.database.pastebin import BaDbin
 
 
 MONGO_DB_URI = os.getenv("MONGO_DB_URI")
