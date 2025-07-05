@@ -380,3 +380,10 @@ async def chat_watcher_func(_, message):
         except:
             return
 
+__MODULE__ = "ᴀғᴋ"
+__HELP__ = """ 
+
+##  ᴀғᴋ 
+» `/afk` <text> :  ɢɪᴠᴇꜱ ᴀᴜᴛᴏ ʀᴇᴘʟʏ ᴡʜᴇɴ ʏᴏᴜ ᴀʀᴇ ᴏꜰꜰʟɪɴᴇ
+ » `/brb` <text> :   ɢɪᴠᴇꜱ ᴀᴜᴛᴏ ʀᴇᴘʟʏ ᴡʜᴇɴ ʏᴏᴜ ᴀʀᴇ ᴏꜰꜰʟɪɴᴇ
+  """
