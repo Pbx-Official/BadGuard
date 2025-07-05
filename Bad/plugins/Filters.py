@@ -142,3 +142,17 @@ async def stop(client, message):
     
     await stop_db(chat_id, filter_name)
     await message.reply(f"I've stopped `{filter_name}`.")
+
+
+__MODULE__ = "ꜰɪʟᴛᴇʀꜱ"
+__HELP__ = """ 
+
+## ꜰɪʟᴛᴇʀꜱ 🐬
+**ᴏɴʟʏ ꜰᴏʀ ɢʀᴏᴜᴘꜱ**
+
+» `/filter` [reply + name] : ꜱᴀᴠᴇ ᴀ ʀᴇᴘʟɪᴇᴅ ᴍᴇꜱꜱᴀɢᴇ ᴀꜱ ᴀ ꜰɪʟᴛᴇʀ
+» `/filters` : ꜱᴇᴇ ᴀʟʟ ꜰɪʟᴛᴇʀꜱ ᴀᴄᴛɪᴠᴇ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ
+» `/stopfilter <name>` : ʀᴇᴍᴏᴠᴇ ᴀ ꜱᴘᴇᴄɪꜰɪᴄ ꜰɪʟᴛᴇʀ
+» `/stopall` : ʀᴇᴍᴏᴠᴇ ᴀʟʟ ꜰɪʟᴛᴇʀꜱ ꜰʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ
+
+"""
