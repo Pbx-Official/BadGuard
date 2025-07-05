@@ -46,7 +46,6 @@ async def ban_new(client, message):
 async def start_comm(client, message: Message):
     chat_id = message.chat.id
     await add_served_user(message.from_user.id)
-    await message.react("❤️")
 
     try:
         out = start_pannel({})
