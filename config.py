@@ -43,6 +43,9 @@ API_HASH = "d927c13beaaf5110f25c505b7c071273"
 BOT_USERNAME ="Broken_Bot"
 
 # ________________________________________________________________________________#
+## Bot id
+BOT_ID = int(getenv("BOT_ID", "7436017266"))
+
 ## Get it from @Botfather in Telegram.
 BOT_TOKEN = "7436017266:AAHYXHPqmvgdOSMkv5Kbt5emmoJwDtjypeQ"
 
