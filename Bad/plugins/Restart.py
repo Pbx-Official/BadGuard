@@ -17,7 +17,7 @@ from Bad.database.database import (
     remove_active_chat,
     remove_active_video_chat,
 )
-from Bad.database.pastebindb import BadBin  # Make sure function name is BadBin not AviaxBin
+from Bad.database.pastebin import BadBin
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
