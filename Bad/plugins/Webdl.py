@@ -48,3 +48,13 @@ def web_download(client, message):
 
         # Reply with the file
         message.reply_document(document='website.txt', caption=f"Source code of {url}")
+
+__MODULE__ = "ᴡᴇʙ-ꜱᴏᴜʀᴄᴇ"
+__HELP__ = """
+
+## 🌐 ᴡᴇʙ-ꜱᴏᴜʀᴄᴇ
+
+» `/webdl <url>` : ꜰᴇᴛᴄʜ ᴀɴᴅ ʀᴇᴛᴜʀɴ ᴛʜᴇ ʜᴛᴍʟ/ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ᴏꜰ ᴀ ɢɪᴠᴇɴ ᴡᴇʙꜱɪᴛᴇ ʟɪɴᴋ.
+
+❖ ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴇ ᴜʀʟ ɪꜱ ᴠᴀʟɪᴅ ᴀɴᴅ ᴛʜᴇ ꜱɪᴛᴇ ɪꜱ ᴀᴄᴄᴇꜱꜱɪʙʟᴇ.
+"""
