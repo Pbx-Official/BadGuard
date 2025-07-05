@@ -32,3 +32,12 @@ async def check_ccbin(client, message):
     except:
         return await message.reply_text(f"""
 ᴛʜᴇ ʙɪɴ ʏᴏᴜ ᴘʀᴏᴠɪᴅᴇᴅ ɪꜱ ɴᴏᴛ ᴀ ᴠᴀʟɪᴅ ʙɪɴ...""")
+
+
+__MODULE__ = "ʙɪɴ"
+__HELP__ = """ 
+
+##  ʙɪɴ
+» `/bin` <card/bin> : ꜰᴇᴛᴄʜ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴀɴʏ ʙɪɴ
+
+"""
