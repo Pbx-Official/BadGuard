@@ -1,86 +1,93 @@
-from pyrogram import filters
+from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram.enums import ChatMemberStatus
-from Bad import app
 import re
 from collections import defaultdict
 
-# Regex for detecting links
+# Regex for link detection
 LINK_REGEX = r"(https?://\S+|www\.\S+|\S+\.(com|in|net|org|info|xyz))"
 
-# Group-wise toggle states
+# User spam tracking
+user_message_times = defaultdict(list)
+
+# Filter states
 anti_link_enabled = defaultdict(lambda: False)
 anti_file_enabled = defaultdict(lambda: False)
 
-# Smallcaps mapping
-SMALLCAPS = {
-    'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ',
-    'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ',
-    'o': 'ᴏ', 'p': 'ᴘ', 'q': 'Q', 'r': 'ʀ', 's': 's', 't': 'ᴛ', 'u': 'ᴜ',
-    'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x', 'y': 'ʏ', 'z': 'ᴢ'
-}
+# Command to enable/disable anti-link and anti-file
+@app.on_message(filters.command(["antifilter", "antifilter@YourBotUsername"]) & filters.group)
+async def toggle_filters(client: Client, message: Message):
+    if not message.from_user:
+        return
 
-def to_smallcaps(text: str) -> str:
-    return ''.join(SMALLCAPS.get(c.lower(), c) for c in text)
-
-async def is_admin(client, message: Message) -> bool:
-    try:
-        member = await client.get_chat_member(message.chat.id, message.from_user.id)
-        return member.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]
-    except:
-        return False
-
-# --- Commands ---
-
-@app.on_message(filters.command("antilink") & filters.group)
-async def toggle_anti_link(client, message: Message):
-    if not await is_admin(client, message):
-        return await message.reply_text(to_smallcaps("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴛᴏɢɢʟᴇ ᴀɴᴛɪ-ʟɪɴᴋ."))
+    # Check if user is admin
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    chat_member = await client.get_chat_member(chat_id, user_id)
     
-    if len(message.command) < 2:
-        return await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antilink on` ᴏʀ `/antilink off`"))
+    if chat_member.status not in ["administrator", "creator"]:
+        await message.reply_text("Only admins can use this command!")
+        return
 
-    arg = message.command[1].lower()
-    anti_link_enabled[message.chat.id] = arg == "on"
-    status = "ᴇɴᴀʙʟᴇᴅ" if arg == "on" else "ᴅɪꜱᴀʙʟᴇᴅ"
-    symbol = "✅" if arg == "on" else "❌"
-    await message.reply_text(to_smallcaps(f"{symbol} ᴀɴᴛɪ-ʟɪɴᴋ ʜᴀꜱ ʙᴇᴇɴ **{status}**."))
+    command_parts = message.text.split()
+    if len(command_parts) < 3:
+        await message.reply_text(
+            "Usage: /antifilter [link|file] [enable|disable]\n"
+            "Example: /antifilter link enable"
+        )
+        return
 
-@app.on_message(filters.command("antifile") & filters.group)
-async def toggle_anti_file(client, message: Message):
-    if not await is_admin(client, message):
-        return await message.reply_text(to_smallcaps("🚫 ᴏɴʟʏ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴛᴏɢɢʟᴇ ᴀɴᴛɪ-ꜰɪʟᴇ."))
-    
-    if len(message.command) < 2:
-        return await message.reply_text(to_smallcaps("ᴜꜱᴀɢᴇ: `/antifile on` ᴏʀ `/antifile off`"))
+    filter_type = command_parts[1].lower()
+    action = command_parts[2].lower()
 
-    arg = message.command[1].lower()
-    anti_file_enabled[message.chat.id] = arg == "on"
-    status = "ᴇɴᴀʙʟᴇᴅ" if arg == "on" else "ᴅɪꜱᴀʙʟᴇᴅ"
-    symbol = "✅" if arg == "on" else "❌"
-    await message.reply_text(to_smallcaps(f"{symbol} ᴀɴᴛɪ-ꜰɪʟᴇ ʜᴀꜱ ʙᴇᴇɴ **{status}**."))
+    if filter_type not in ["link", "file"]:
+        await message.reply_text("Invalid filter type! Use 'link' or 'file'.")
+        return
 
-# --- Filters ---
+    if action not in ["enable", "disable"]:
+        await message.reply_text("Invalid action! Use 'enable' or 'disable'.")
+        return
 
+    if filter_type == "link":
+        anti_link_enabled[chat_id] = (action == "enable")
+        status = "enabled" if action == "enable" else "disabled"
+        await message.reply_text(f"Anti-link filter has been {status}.")
+    elif filter_type == "file":
+        anti_file_enabled[chat_id] = (action == "enable")
+        status = "enabled" if action == "enable" else "disabled"
+        await message.reply_text(f"Anti-file filter has been {status}.")
+
+# Anti-Link Filter
 @app.on_message(filters.group & filters.text & ~filters.private)
-async def anti_link_filter(_, message: Message):
+async def anti_link(_, message: Message):
     if not anti_link_enabled[message.chat.id]:
         return
+
     if re.search(LINK_REGEX, message.text.lower()):
         try:
-            await message.delete()
-            await message.reply_text(to_smallcaps(f"{message.from_user.mention} ⚠️ ʟɪɴᴋꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."))
+            if message.from_user:  # Check if message has a sender
+                await message.delete()
+                warning = f"{message.from_user.mention} ʟɪɴᴋꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."
+                await message.reply_text(warning)
         except Exception as e:
-            print(f"[AntiLink] Error: {e}")
+            print(f"Link Deletion Error: {e}")
 
+# Anti-File Filter
 @app.on_message(filters.group & filters.document)
-async def anti_file_filter(_, message: Message):
+async def anti_files(_, message: Message):
     if not anti_file_enabled[message.chat.id]:
         return
-    allowed_exts = ('.jpg', '.jpeg', '.png', '.gif', '.mp3', '.mp4')
+
+    allowed_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.mp3', '.mp4')
+    
     try:
-        if message.document and not message.document.file_name.lower().endswith(allowed_exts):
+        if not message.document or not message.document.file_name:
+            return
+
+        file_name = message.document.file_name.lower()
+        if not file_name.endswith(allowed_extensions):
             await message.delete()
-            await message.reply_text(to_smallcaps(f"{message.from_user.mention} ⚠️ ꜰɪʟᴇꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."))
+            if message.from_user:  # Check if message has a sender
+                warning = f"{message.from_user.mention} ꜰɪʟᴇꜱ ᴀʀᴇ ɴᴏᴛ ᴀʟʟᴏᴡᴇᴅ."
+                await message.reply_text(warning)
     except Exception as e:
-        print(f"[AntiFile] Error: {e}")
+        print(f"File Deletion Error: {e}")
