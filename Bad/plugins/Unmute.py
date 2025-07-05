@@ -129,3 +129,15 @@ async def unmutebutton(c: app, q: CallbackQuery):
     
     await q.message.edit_text(f"ᴜɴᴍᴜᴛᴇ ᴇᴠᴇɴᴛ \n\n ɴᴀᴍᴇ - {whoo.mention}! \nUɴᴍᴜᴛᴇᴅ Bʏ {q.from_user.mention}")
     return
+
+__MODULE__ = "ᴍᴜᴛᴇ"
+__HELP__ = """
+
+## 🔇 ᴍᴜᴛᴇ ᴄᴏɴᴛʀᴏʟ
+
+» `/mute` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ ᴏʀ ᴘᴀss ᴛʜᴇɪʀ ɪᴅ ᴛᴏ ᴘʀᴇᴠᴇɴᴛ ᴛʜᴇᴍ ꜰʀᴏᴍ sᴇɴᴅɪɴɢ ᴀɴʏᴛʜɪɴɢ ɪɴ ᴛʜᴇ ɢʀᴏᴜᴘ.
+
+» `/unmute` : ᴜɴᴍᴜᴛᴇ ᴀ ᴘʀᴇᴠɪᴏᴜsʟʏ ᴍᴜᴛᴇᴅ ᴍᴇᴍʙᴇʀ.
+
+❖ ʙᴏᴛ ᴍᴜꜱᴛ ʙᴇ ᴀɴ ᴀᴅᴍɪɴ ᴡɪᴛʜ ʀɪɢʜᴛs ᴛᴏ ʀᴇsᴛʀɪᴄᴛ ᴍᴇᴍʙᴇʀꜱ.
+"""
