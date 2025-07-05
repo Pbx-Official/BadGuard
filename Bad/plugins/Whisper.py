@@ -130,3 +130,19 @@ async def bot_inline(_, inline_query):
     else:
         answers = await _whisper(_, inline_query)
         await inline_query.answer(answers[-1], cache_time=0)
+
+
+__MODULE__ = "ᴡʜɪꜱᴘᴇʀ"
+__HELP__ = """
+
+## 💒 ᴡʜɪꜱᴘᴇʀ
+
+» `@BrokenRobot_Bot <username|user_id> <text>` : ꜱᴇɴᴅ ᴀ ᴘʀɪᴠᴀᴛᴇ ᴡʜɪꜱᴘᴇʀ ᴛᴏ ᴀɴʏ ᴜꜱᴇʀ ᴠɪᴀ ɪɴʟɪɴᴇ ᴍᴏᴅᴇ.
+» ꜱᴜᴘᴘᴏʀᴛꜱ ʙᴏᴛʜ **ɴᴏʀᴍᴀʟ** ᴀɴᴅ **ᴏɴᴇ-ᴛɪᴍᴇ** ᴡʜɪꜱᴘᴇʀꜱ.
+
+❖ ᴇxᴀᴍᴘʟᴇ:
+`@BrokenRobot_Bot @PB_SUKH Hello!`
+
+❖ ᴏɴᴇ-ᴛɪᴍᴇ ᴡʜɪꜱᴘᴇʀ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ʀᴇᴀᴅ ᴏɴᴄᴇ ʙʏ ᴛʜᴇ ʀᴇᴄɪᴘɪᴇɴᴛ.
+
+"""
