@@ -169,7 +169,7 @@ async def promote_owner(client, chat_member_updated):
 )
 
 
-__MODULE__ = "ʀᴇsᴛʀɪᴄᴛɪᴏɴ (ʀᴏʙᴏ)"
+__MODULE__ = "ʀᴏʙᴏ"
 __HELP__ = """
 **<u>ᴏʙᴏ ᴄᴏᴍᴍᴀɴᴅs 🧠</u>**
 
