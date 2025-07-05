@@ -86,7 +86,7 @@ async def can_delete_messages(chat_id: int) -> bool:
         return False
 
 # Command to enable filters
-@app.on_message(filters.group & filters.command(["enablelink", "enablefile", "enableall"]) & filters.admin)
+@app.on_message(filters.group & filters.command(["enablelink", "enablefile", "enableall"])
 async def enable_filters(_, message: Message):
     chat_id = message.chat.id
     command = message.command[0].lower()
