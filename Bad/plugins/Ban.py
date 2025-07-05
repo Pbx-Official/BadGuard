@@ -199,3 +199,14 @@ async def ban_command_handler(client, message):
     if not result:
         await message.reply_text(msg_text)
 
+
+__MODULE__ = "ʙᴀɴ"
+__HELP__ = """ 
+
+##  ʙᴀɴ
+» `/ban` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜꜱᴇʀ ᴏʀ ᴘʀᴏᴠɪᴅᴇ ɪᴅ/ᴜꜱᴇʀɴᴀᴍᴇ ᴛᴏ ʙᴀɴ
+» `/dban` : ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ʙᴀɴ ᴀɴᴅ ᴅᴇʟᴇᴛᴇ ᴛʜᴇ ᴍᴇꜱꜱᴀɢᴇ
+» `/sban` : ʀᴇᴘʟʏ ꜱɪʟᴇɴᴛʟʏ ᴛᴏ ʙᴀɴ ᴀ ᴜꜱᴇʀ ᴡɪᴛʜᴏᴜᴛ ʀᴇᴘʟɪᴇꜱ
+» `/unban` : ʀᴇᴘʟʏ ᴏʀ ᴘʀᴏᴠɪᴅᴇ ɪᴅ/ᴜꜱᴇʀɴᴀᴍᴇ ᴛᴏ ᴜɴʙᴀɴ ᴀ ᴜꜱᴇʀ
+
+"""
