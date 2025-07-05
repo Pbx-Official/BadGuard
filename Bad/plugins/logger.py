@@ -30,3 +30,14 @@ async def logger(client, message: Message):
             await message.reply_text(usage)
     except Exception as e:
         await message.reply_text(_["general_2"].format(str(e)))
+
+__MODULE__ = "ʟᴏɢɢᴇʀ"
+__HELP__ = """
+
+## ʟᴏɢɢɪɴɢ 📓
+
+» `/logger enable` : ᴇɴᴀʙʟᴇ ᴛʜᴇ ʟᴏɢɢɪɴɢ ꜱʏꜱᴛᴇᴍ.
+» `/logger disable` : ᴅɪꜱᴀʙʟᴇ ᴛʜᴇ ʟᴏɢɢɪɴɢ ꜱʏꜱᴛᴇᴍ.
+
+❖ ᴏɴʟʏ ꜱᴜᴅᴏ ᴜꜱᴇʀꜱ ᴄᴀɴ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.
+"""
