@@ -222,3 +222,16 @@ async def kickme_command(client, message):
         # Handle any errors that may occur during the kicking process
         await message.reply_text(f"An error occurred: {str(e)}")
 
+
+__MODULE__ = "ᴋɪᴄᴋ"
+__HELP__ = """ 
+
+## ᴋɪᴄᴋ 😆
+
+» `/kick` : 
+ᴋɪᴄᴋ ᴀ ᴜꜱᴇʀ ꜰʀᴏᴍ ʏᴏᴜʀ ɢʀᴏᴜᴘ ʙʏ ʀᴇᴘʟʏɪɴɢ ᴏʀ ᴘᴀꜱꜱɪɴɢ ᴛʜᴇɪʀ ᴜꜱᴇʀɴᴀᴍᴇ/ɪᴅ.
+
+» `/kickme` : 
+ᴋɪᴄᴋ ʏᴏᴜʀꜱᴇʟꜰ ꜰʀᴏᴍ ᴀ ɢʀᴏᴜᴘ (ɪꜰ ʏᴏᴜ ᴅᴀʀᴇ 😹)
+
+"""
