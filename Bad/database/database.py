@@ -85,6 +85,19 @@ async def delete_served_chat(chat_id: int):
     await chatsdb.delete_one({"chat_id": chat_id})
 
 
+# active chat 
+
+async def get_active_chats() -> list:
+    return active
+
+async def remove_active_chat(chat_id: int):
+    if chat_id in active:
+        active.remove(chat_id)
+
+async def remove_active_video_chat(chat_id: int):
+    if chat_id in activevideo:
+        activevideo.remove(chat_id)
+
 # Blacklisted Chats
 
 
