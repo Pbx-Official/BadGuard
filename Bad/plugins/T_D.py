@@ -32,3 +32,15 @@ async def get_dare(client, message):
             await message.reply_text("Failed to fetch a dare question. Please try again later.")
     except Exception as e:
         await message.reply_text("An error occurred while fetching a dare question. Please try again later.")
+
+__MODULE__ = "ᴛʀᴜᴛʜ-ᴅᴀʀᴇ"
+__HELP__ = """ 
+
+## ᴛʀᴜᴛʜ ᴏʀ ᴅᴀʀᴇ 🎲
+
+» `/truth` : ɢᴇᴛ ᴀ ʀᴀɴᴅᴏᴍ ᴛʀᴜᴛʜ Qᴜᴇꜱᴛɪᴏɴ.
+» `/dare` : ɢᴇᴛ ᴀ ʀᴀɴᴅᴏᴍ ᴅᴀʀᴇ ᴄʜᴀʟʟᴇɴɢᴇ.
+
+❖ ᴜꜱᴇ ᴛʜᴇꜱᴇ ᴛᴏ ᴘʟᴀʏ ᴀ ꘩ꜰᴜɴ ɢᴀᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ
+
+"""
