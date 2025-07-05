@@ -59,3 +59,14 @@ async def speedtest_function(client, message: Message, _):
 
     except Exception as e:
         await m.edit_text(f"<code>{e}</code>")
+
+
+__MODULE__ = "ꜱᴇʀᴠᴇʀ ꜱᴘᴇᴇᴅ"
+__HELP__ = """
+**<u>ꜱᴘᴇᴇᴅᴛᴇꜱᴛ ⚡</u>**
+
+/speedtest - ᴄʜᴇᴄᴋ ᴛʜᴇ sᴇʀᴠᴇʀ's ᴅᴏᴡɴʟᴏᴀᴅ ᴀɴᴅ ᴜᴘʟᴏᴀᴅ sᴘᴇᴇᴅ, ʟᴀᴛᴇɴᴄʏ, ᴀɴᴅ ᴘɪɴɢ.
+
+• ʀᴜɴs ᴀ ꜰᴜʟʟ sᴘᴇᴇᴅᴛᴇꜱᴛ ᴀɴᴅ ʀᴇᴛᴜʀɴs ᴀ sʜᴀʀᴇᴀʙʟᴇ ɪᴍᴀɢᴇ ᴡɪᴛʜ ʀᴇsᴜʟᴛs.
+• sᴜᴅᴏ ᴏɴʟʏ ᴄᴏᴍᴍᴀɴᴅ.
+"""
