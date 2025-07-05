@@ -167,3 +167,20 @@ async def promote_owner(client, chat_member_updated):
                 chat_id=chat_member_updated.chat.id,
                 text="❤️"
 )
+
+
+__MODULE__ = "ʀᴇsᴛʀɪᴄᴛɪᴏɴ (ʀᴏʙᴏ)"
+__HELP__ = """
+**<u>ᴏʙᴏ ᴄᴏᴍᴍᴀɴᴅs 🧠</u>**
+
+» `Robo ban` - ʙᴀɴ ᴀ ᴜꜱᴇʀ (ʀᴇᴘʟʏ).
+» `Robo unban` - ᴜɴʙᴀɴ ᴀ ᴜꜱᴇʀ (ʀᴇᴘʟʏ).
+» `Robo mute` - ᴍᴜᴛᴇ ᴀ ᴜꜱᴇʀ (ʀᴇᴘʟʏ).
+» `Robo unmute` - ᴜɴᴍᴜᴛᴇ ᴀ ᴜꜱᴇʀ (ʀᴇᴘʟʏ).
+» `Robo kick` - ᴋɪᴄᴋ ᴀ ᴜꜱᴇʀ ꜰʀᴏᴍ ɢʀᴏᴜᴘ (ʀᴇᴘʟʏ).
+» `Robo promote` - ɢɪᴠᴇ ʟɪᴍɪᴛᴇᴅ ᴀᴅᴍɪɴ ʀɪɢʜᴛꜱ.
+» `Robo demote` - ʀᴇᴍᴏᴠᴇ ᴀᴅᴍɪɴ ʀɪɢʜᴛꜱ.
+» `Robo fullpromote` - ꜰᴜʟʟ ᴀᴅᴍɪɴ ᴘʀɪᴠɪʟᴇɢᴇꜱ.
+
+**➥ All actions require replying to a user’s message.**
+"""
