@@ -90,3 +90,17 @@ async def get_link_group(client, message):
             os.remove(local_path)
         except Exception:
             pass
+
+
+__MODULE__ = "ᴛᴇʟᴇɢʀᴀᴘʜ"
+__HELP__ = """ 
+
+## ᴄᴀᴛʙᴏx 🗂️
+
+» `/tgm` , `/tgt` , `/telegraph` , `/tl` : 
+ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇᴅɪᴀ ꜰɪʟᴇ (ɪᴍᴀɢᴇ/ᴠɪᴅᴇᴏ/ᴅᴏᴄᴜᴍᴇɴᴛ) ᴛᴏ ᴜᴘʟᴏᴀᴅ ɪᴛ ᴛᴏ **ᴄᴀᴛʙᴏx** ᴀɴᴅ ɢᴇᴛ ᴀ ᴅɪʀᴇᴄᴛ ᴜʀʟ 🔗
+
+❖ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ꜰɪʟᴇꜱ : ᴘʜᴏᴛᴏ, ᴠɪᴅᴇᴏ, ᴅᴏᴄᴜᴍᴇɴᴛ  
+❖ ᴍᴀx ꜱɪᴢᴇ : 200ᴍʙ
+
+"""
