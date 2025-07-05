@@ -249,3 +249,16 @@ async def fullpromote(client, message):
     msg_text, result = await fullpromote_user(user_id, first_name, admin_id, admin_name, chat_id, message)
     if not result:
         await message.reply_text(msg_text)
+
+
+__MODULE__ = "ᴘʀᴏᴍᴏᴛᴇ"
+__HELP__ = """ 
+
+## ᴘʀᴏᴍᴏᴛᴇ 💢
+
+» `/promote` [user_id / username / reply] : ᴘʀᴏᴍᴏᴛᴇ ᴜꜱᴇʀ ᴡɪᴛʜ ɴᴏʀᴍᴀʟ ʀɪɢʜᴛꜱ  
+» `/lowpromote` [user_id / username / reply] : ᴘʀᴏᴍᴏᴛᴇ ᴜꜱᴇʀ ᴡɪᴛʜ ʟᴏᴡ ʀɪɢʜᴛꜱ  
+» `/fullpromote` [user_id / username / reply] : ᴘʀᴏᴍᴏᴛᴇ ᴜꜱᴇʀ ᴡɪᴛʜ ꜰᴜʟʟ ᴀᴅᴍɪɴ ʀɪɢʜᴛꜱ  
+» `/demote` [user_id / username / reply] : ʀᴇᴍᴏᴠᴇ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴀᴅᴍɪɴꜱ
+
+"""
