@@ -176,3 +176,12 @@ async def style(c, m):
     except Exception as e:
         print(e)
 
+
+__MODULE__ = "ꜱᴛʏʟɪꜱʜ ꜰᴏɴᴛꜱ"
+__HELP__ = """ 
+
+## ꜱᴛʏʟɪꜱʜ ꜰᴏɴᴛꜱ ✨
+
+» `/font <text>` : ɢᴇɴᴇʀᴀᴛᴇ ꜱᴛʏʟɪꜱʜ ᴀɴᴅ ꜰᴀɴᴄʏ ꜰᴏɴᴛꜱ ꜰʀᴏᴍ ʏᴏᴜʀ ᴛᴇxᴛ
+
+"""
