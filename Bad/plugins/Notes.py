@@ -248,3 +248,30 @@ async def PrivateNoteButton(message, chat_id, NoteName):
         text=f"Tap here to view '{NoteName}' in your private chat.",
         reply_markup=PrivateNoteButton
 )
+
+__MODULE__ = "ɴᴏᴛᴇꜱ"
+__HELP__ = """ 
+
+## ɴᴏᴛᴇꜱ 📑
+
+» `/get <notename>` : ɢᴇᴛ ᴀ ɴᴏᴛᴇ ʙʏ ɪᴛꜱ ɴᴀᴍᴇ  
+» `#notename` : ꜱᴀᴍᴇ ᴀꜱ `/get`  
+» `/get noformat` : ɢᴇᴛ ɴᴏᴛᴇ ᴄᴏɴᴛᴇɴᴛ ᴡɪᴛʜᴏᴜᴛ ꜰᴏʀᴍᴀᴛᴛɪɴɢ  
+
+» `/notes` or `/saved` : ʟɪꜱᴛ ᴀʟʟ ꜱᴀᴠᴇᴅ ɴᴏᴛᴇꜱ  
+» `/number` : ɢᴇᴛ ᴀ ɴᴏᴛᴇ ʙʏ ɪᴛꜱ ɪɴᴅᴇx ɪɴ ᴛʜᴇ ʟɪꜱᴛ  
+
+» `/save <notename>` : ꜱᴀᴠᴇ ᴀ ɴᴏᴛᴇ ꜰʀᴏᴍ ᴛᴇxᴛ  
+» `/save <notename>` (ʀᴇᴘʟʏ) : ꜱᴀᴠᴇ ᴀ ᴍᴇꜱꜱᴀɢᴇ ᴀꜱ ɴᴏᴛᴇ  
+
+» `/clear <notename>` : ᴅᴇʟᴇᴛᴇ ᴀ ɴᴏᴛᴇ ʙʏ ɪᴛꜱ ɴᴀᴍᴇ  
+» `/removeallnotes` : ʀᴇᴍᴏᴠᴇ ᴀʟʟ ꜱᴀᴠᴇᴅ ɴᴏᴛᴇꜱ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ  
+
+» `/privatenotes <on/off>` : ᴇɴᴀʙʟᴇ/ᴅɪꜱᴀʙʟᴇ ᴘʀɪᴠᴀᴛᴇ ɴᴏᴛᴇꜱ.  
+ᴡʜᴇɴ ᴇɴᴀʙʟᴇᴅ, ʙᴏᴛ ᴡɪʟʟ ꜱᴇɴᴅ ɴᴏᴛᴇꜱ ɪɴ ᴘʀɪᴠᴀᴛᴇ ᴍᴇꜱꜱᴀɢᴇ ꜱᴛʀᴇᴀᴅ ᴏꜰ ɢʀᴏᴜᴘ  
+
+❖ ʏᴏᴜ ᴄᴀɴ ᴀᴅᴅ ʙᴜᴛᴛᴏɴꜱ ᴛᴏ ɴᴏᴛᴇꜱ ᴜꜱɪɴɢ ᴍᴀʀᴋᴅᴏᴡɴ `[ᴛᴇxᴛ](url)` ꜰᴏʀᴍᴀᴛ ᴡɪᴛʜ `button:` ᴘʀᴇꜰɪx  
+
+❖ ɴᴏᴛᴇ ɴᴀᴍᴇꜱ ᴀʀᴇ ᴄᴀꜱᴇ-ɪɴꜱᴇɴꜱɪᴛɪᴠᴇ ᴀɴᴅ ᴀʟᴡᴀʏꜱ ꜱᴀᴠᴇᴅ ɪɴ ʟᴏᴡᴇʀᴄᴀꜱᴇ  
+
+"""
