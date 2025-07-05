@@ -8,6 +8,7 @@ import logging
 import asyncio
 from collections import defaultdict
 from Bad import app
+from config import BANNED_USERS
 
 # Configure logging
 logging.basicConfig(
@@ -86,7 +87,7 @@ async def can_delete_messages(chat_id: int) -> bool:
         return False
 
 # Command to enable filters
-@app.on_message(filters.group & filters.command(["enablelink", "enablefile", "enableall"])
+@app.on_message(filters.command(["enlink"]) & ~BANNED_USERS)
 async def enable_filters(_, message: Message):
     chat_id = message.chat.id
     command = message.command[0].lower()
@@ -106,7 +107,7 @@ async def enable_filters(_, message: Message):
         logger.info(f"All filters enabled in chat {chat_id} by {message.from_user.id}")
 
 # Command to disable filters
-@app.on_message(filters.group & filters.command(["disablelink", "disablefile", "disableall"]) & filters.admin)
+@app.on_message(filters.command(["disablelink"]) & ~BANNED_USERS)
 async def disable_filters(_, message: Message):
     chat_id = message.chat.id
     command = message.command[0].lower()
@@ -126,7 +127,7 @@ async def disable_filters(_, message: Message):
         logger.info(f"All filters disabled in chat {chat_id} by {message.from_user.id}")
 
 # Command to check filter status
-@app.on_message(filters.group & filters.command("filterstatus") & filters.admin)
+@app.on_message(filters.command(["stt"]) & ~BANNED_USERS)
 async def filter_status(_, message: Message):
     chat_id = message.chat.id
     link_filter, file_filter = get_filter_state(chat_id)
