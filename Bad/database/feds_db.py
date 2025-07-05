@@ -7,8 +7,8 @@ from Bad.database import mongodb
 fedsdb = mongodb["federation"]
 
 
-def get_fed_info(fed_id):
-    get = fedsdb.find_one({"fed_id": str(fed_id)})
+async def get_fed_info(fed_id):
+    get = await fedsdb.find_one({"fed_id": str(fed_id)})
     return False if get is None else get
 
 
