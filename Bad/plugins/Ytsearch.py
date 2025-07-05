@@ -27,7 +27,7 @@ async def ytsearch(_, message: Message):
         await m.edit(str(e))
 
 
-__MODULE__ = "ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ"
+__MODULE__ = "ʏᴛ ꜱᴇᴀʀᴄʜ"
 __HELP__ = """
 
 ## ʏᴏᴜᴛᴜʙᴇ ꜱᴇᴀʀᴄʜ 🔎
