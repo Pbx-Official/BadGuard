@@ -86,3 +86,25 @@ async def sudoers_list(client, message: Message, _):
         return await mystic.edit_text(_["block_5"])
     else:
         return await mystic.edit_text(msg)
+
+
+__MODULE__ = "ʙʟᴀᴄᴋʟɪꜱᴛ"
+__HELP__ = """ 
+
+##  ʙʟᴀᴄᴋʟɪꜱᴛ / ɢʙᴀɴ / ʙʟᴏᴄᴋ
+
+» `/blacklistchat` [chat_id] : ʙʟᴀᴄᴋʟɪꜱᴛ ᴀ ᴄʜᴀᴛ ꜰʀᴏᴍ ᴜꜱɪɴɢ ᴛʜᴇ ʙᴏᴛ
+» `/whitelistchat` [chat_id] : ʀᴇᴍᴏᴠᴇ ᴀ ᴄʜᴀᴛ ꜰʀᴏᴍ ʙʟᴀᴄᴋʟɪꜱᴛ
+» `/blacklistedchat` : ᴄʜᴇᴄᴋ ᴀʟʟ ʙʟᴀᴄᴋʟɪꜱᴛᴇᴅ ᴄʜᴀᴛꜱ
+
+👤 **ʙʟᴏᴄᴋ ᴄᴏᴍᴍᴀɴᴅꜱ:**
+» `/block` [username/reply] : ᴘʀᴇᴠᴇɴᴛ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴜꜱɪɴɢ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅꜱ
+» `/unblock` [username/reply] : ᴀʟʟᴏᴡ ᴜꜱᴇʀ ᴀɢᴀɪɴ ᴛᴏ ᴜꜱᴇ ʙᴏᴛ
+» `/blockedusers` : ᴠɪᴇᴡ ᴀʟʟ ʙʟᴏᴄᴋᴇᴅ ᴜꜱᴇʀꜱ
+
+👤 **ɢʙᴀɴ ᴄᴏᴍᴍᴀɴᴅꜱ:**
+» `/gban` [username/reply] : ɢʟᴏʙᴀʟʟʏ ʙᴀɴ ᴀ ᴜꜱᴇʀ ꜰʀᴏᴍ ᴀʟʟ ᴄʜᴀᴛꜱ ᴜꜱɪɴɢ ᴛʜᴇ ʙᴏᴛ
+» `/ungban` [username/reply] : ʀᴇᴍᴏᴠᴇ ᴜꜱᴇʀ ꜰʀᴏᴍ ɢʙᴀɴ ʟɪꜱᴛ
+» `/gbannedusers` : ʟɪꜱᴛ ᴀʟʟ ɢʙᴀɴɴᴇᴅ ᴜꜱᴇʀꜱ
+
+"""
