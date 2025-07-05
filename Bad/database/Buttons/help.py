@@ -32,7 +32,7 @@ def help_back_markup(_):
     return upl
 
 
-def private_help_panel(_):
+def private_help_panel():
     buttons = [
         [
             InlineKeyboardButton(
