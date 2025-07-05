@@ -59,7 +59,6 @@ async def get_fed_name(chat_id):
     get = await fedsdb.find_one(int(chat_id))
     return False if get is None else get["fed_name"]
 
-
 async def is_user_fed_owner(fed_id, user_id: int):
     getfed = await get_fed_info(fed_id)
     if not getfed:
