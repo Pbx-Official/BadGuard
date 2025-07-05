@@ -64,3 +64,29 @@ async def cancelcmd(_, message):
     else :
         await message.reply_text("**ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!**")  
         return       
+
+
+@app.on_message(filters.command("admin") | (filters.text & filters.regex(r"@admin")) & filters.group)
+async def tag_admins(_, message):
+    # Check if the command is in reply or with extra text
+    replied = message.reply_to_message
+    chat_id = message.chat.id
+    admin_list = []
+    async for member in app.get_chat_members(chat_id, filter="administrators"):
+        # Ignore bots
+        if member.user.is_bot:
+            continue
+        admin_list.append(f"[{member.user.first_name}](tg://user?id={member.user.id})")
+    if not admin_list:
+        await message.reply_text("No admins found in this group.")
+        return
+
+    admin_tags = " ".join(admin_list)
+    if replied:
+        await replied.reply_text(
+            f"**Reported to admins.**\n{admin_tags}"
+        )
+    else:
+        await message.reply_text(
+            f"**Reported to admins.**\n{admin_tags}"
+        )
