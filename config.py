@@ -74,7 +74,7 @@ OWNER_ID = list(
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/Pbx-Official/BadGuard",
+    "https://github.com/Badhacker98/BadGuard",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 
@@ -92,7 +92,7 @@ EXTRA_PLUGINS = getenv(
 
 EXTRA_PLUGINS_REPO = getenv(
     "EXTRA_PLUGINS_REPO",
-    "https://github.com/Pbx-Official/BadGuardX",
+    "https://github.com/Badhacker98/BadGuardX",
 )
 # Fill here the external plugins repo where plugins that you want to load
 
