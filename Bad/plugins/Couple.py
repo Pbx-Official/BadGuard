@@ -237,3 +237,13 @@ async def regeneratecouples(client: Client, cb: CallbackQuery):
         os.remove(f"test_{cid}.png")
     except Exception:
         pass
+
+__MODULE__ = "ᴄᴏᴜᴘʟᴇ"
+__HELP__ = """ 
+
+## ᴄᴏᴜᴘʟᴇ 👩‍❤️‍👨
+**ᴏɴʟʏ ꜰᴏʀ ɢʀᴏᴜᴘꜱ**
+
+» `/couple` : ɢᴇᴛ ʀᴀɴᴅᴏᴍ ᴄᴏᴜᴘʟᴇ ᴘᴀɪʀꜱ ꜰʀᴏᴍ ᴛʜᴇ ɢʀᴏᴜᴘ ᴡɪᴛʜ ᴄᴜᴛᴇ ᴛʜᴜᴍʙɴᴀɪʟꜱ 🎈
+
+"""
