@@ -4,7 +4,7 @@ from telethon import TelegramClient
 from telegram import Update
 from telegram.ext import Application, ApplicationBuilder, CommandHandler, ContextTypes
 import config
-from Bad import LOGGER
+from ..logging import LOGGER
 from Bad.plugins import ALL_MODULES
 
 async def send_startup_message(client, client_type: str):
