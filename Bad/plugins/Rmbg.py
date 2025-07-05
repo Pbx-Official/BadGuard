@@ -54,3 +54,18 @@ async def rmbg(bot, message):
       await rmbg.delete()
       return os.remove(y)
   await rmbg.edit("Reply only to a photo to Remove it's Background")
+
+
+__MODULE__ = "ʀᴍʙɢ"
+__HELP__ = """
+**<u>🎨 ʀᴇᴍᴏᴠᴇ ʙᴀᴄᴋɢʀᴏᴜɴᴅ</u>**
+
+» `/rmbg` – ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴘʜᴏᴛᴏ ᴛᴏ ʀᴇᴍᴏᴠᴇ ɪᴛꜱ ʙᴀᴄᴋɢʀᴏᴜɴᴅ.
+
+• ᴜꜱᴇꜱ [remove.bg](https://www.remove.bg) ᴀᴘɪ ꜰᴏʀ ᴀᴄᴄᴜʀᴀᴛᴇ ᴀɴᴅ ᴀᴜᴛᴏᴍᴀᴛɪᴄ ʙɢ ᴄᴜᴛ-ᴏᴜᴛ.
+• ʀᴇᴛᴜʀɴꜱ ᴀ ᴄʟᴇᴀɴ ɪᴍᴀɢᴇ & ᴀʟꜱᴏ ᴀꜱ ᴅᴏᴄᴜᴍᴇɴᴛ ꜰᴏʀ ʙᴇᴛᴛᴇʀ ǫᴜᴀʟɪᴛʏ.
+
+**<u>💡 ɴᴏᴛᴇ</u>**
+• ʀᴇᴘʟʏ ᴏɴʟʏ ᴛᴏ ᴘʜᴏᴛᴏꜱ.
+• ᴀ ᴠᴀʟɪᴅ ʀᴇᴍᴏᴠᴇ.ʙɢ ᴀᴘɪ ᴋᴇʏ ɪꜱ ʀᴇǫᴜɪʀᴇᴅ.
+"""
