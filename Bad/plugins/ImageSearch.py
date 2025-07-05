@@ -103,3 +103,14 @@ async def bing_image(client, message):
     await message.delete()
 
 
+__MODULE__ = "ɪᴍᴀɢᴇ"
+__HELP__ = """ 
+
+## ɪᴍᴀɢᴇ ꜱᴇᴀʀᴄʜ 🔎
+
+» `/image <query>` : ꜱᴇᴀʀᴄʜ ɪᴍᴀɢᴇꜱ ᴏɴ **ɢᴏᴏɢʟᴇ**  
+» `/bingimg <query>` : ꜱᴇᴀʀᴄʜ ɪᴍᴀɢᴇꜱ ᴏɴ **ʙɪɴɢ**
+
+❖ ᴊᴜꜱᴛ ᴛʏᴘᴇ ᴀɴʏ ᴋᴇʏᴡᴏʀᴅ ᴀꜰᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ꜰɪɴᴅ ᴘɪᴄᴛᴜʀᴇꜱ.
+
+"""
