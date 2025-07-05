@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import re
+from Bad import app
 from collections import defaultdict
 
 # Regex for link detection
@@ -14,7 +15,7 @@ anti_link_enabled = defaultdict(lambda: False)
 anti_file_enabled = defaultdict(lambda: False)
 
 # Command to enable/disable anti-link and anti-file
-@app.on_message(filters.command(["antifilter", "antifilter@YourBotUsername"]) & filters.group)
+@app.on_message(filters.command(["antifilter"]) & filters.group)
 async def toggle_filters(client: Client, message: Message):
     if not message.from_user:
         return
