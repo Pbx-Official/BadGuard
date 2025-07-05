@@ -216,7 +216,7 @@ async def anti_files(_, message: Message):
         await asyncio.sleep(e.value)
         await message.reply_text(warning)
     except MessageDeleteForbidden:
-        awaitu message.reply_text("Bot lacks permission to delete messages.")
+        await message.reply_text("Bot lacks permission to delete messages.")
         logger.warning(f"Bot lacks delete permission in chat {chat_id}")
     except Exception as e:
         logger.error(f"File Deletion Error in chat {chat_id}: {e}")
