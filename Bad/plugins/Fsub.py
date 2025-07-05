@@ -11,7 +11,6 @@ from pymongo import MongoClient
 import asyncio
 import os
 
-# Assuming these are defined in config or elsewhere
 from Bad.misc import SUDOERS
 from Bad import Bad
 from config import MONGO_DB_URI
@@ -20,7 +19,7 @@ from config import MONGO_DB_URI
 fsubdb = MongoClient(MONGO_DB_URI)
 forcesub_collection = fsubdb.status_db.status
 
-# Smallcap conversion dictionary
+# Smallcap conversion dictionary (only used internally or for buttons)
 SMALLCAPS = {
     'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ',
     'h': 'ʜ', 'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ',
@@ -31,7 +30,6 @@ SMALLCAPS = {
 def to_smallcaps(text):
     return ''.join(SMALLCAPS.get(c.lower(), c) for c in text)
 
-# Check if user is group owner
 async def is_group_owner(event, chat_id, user_id):
     try:
         chat = await event.client.get_entity(chat_id)
@@ -41,38 +39,33 @@ async def is_group_owner(event, chat_id, user_id):
     except Exception:
         return False
 
-# Command to set or disable force subscription
 @Bad.on(events.NewMessage(pattern=r'^/fsub\b'))
 async def set_forcesub(event):
     chat_id = event.chat_id
     user_id = event.sender_id
 
-    # Check if user is sudoer or group owner
     is_owner = await is_group_owner(event, chat_id, user_id)
     if user_id not in SUDOERS and not is_owner:
-        await event.reply(to_smallcaps("**You are not authorized to use this command.**"))
+        await event.reply("**ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ.**")
         return
 
     args = event.message.text.split(maxsplit=1)
     if len(args) < 2:
-        await event.reply(to_smallcaps("**Usage: /fsub <channel username or ID> or /fsub off to disable**"))
+        await event.reply("**ᴜꜱᴀɢᴇ: /ғꜱᴜʙ <ᴄʜᴀɴɴᴇʟ ᴜꜱᴇʀɴᴀᴍᴇ ᴏʀ ɪᴅ> ᴏʀ /ғꜱᴜʙ ᴏꜰꜰ ᴛᴏ ᴅɪꜱᴀʙʟᴇ**")
         return
 
     command = args[1].lower()
 
-    # Disable force subscription
     if command in ["off", "disable"]:
         forcesub_collection.delete_one({"chat_id": chat_id})
-        await event.reply(to_smallcaps("**Force subscription has been disabled for this group.**"))
+        await event.reply("**ꜰᴏʀᴄᴇ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ʜᴀꜱ ʙᴇᴇɴ ᴅɪꜱᴀʙʟᴇᴅ ꜰᴏʀ ᴛʜɪꜱ ɢʀᴏᴜᴘ.**")
         return
 
     channel_input = command
     try:
-        # Get channel information
         channel = await Bad.get_entity(channel_input)
         channel_id = channel.id
         channel_title = getattr(channel, 'title', 'Channel')
-        # Fetch invite link if no username is available
         if getattr(channel, 'username', None):
             channel_link = f"https://t.me/{channel.username}"
             channel_username = f"@{channel.username}"
@@ -84,7 +77,6 @@ async def set_forcesub(event):
                 channel_link = "https://t.me/"
             channel_username = channel_link
 
-        # Check if bot is admin in the channel
         bot_id = (await Bad.get_me()).id
         bot_is_admin = False
         async for admin in Bad.iter_participants(channel_id, filter=ChannelParticipantsAdmins):
@@ -94,21 +86,14 @@ async def set_forcesub(event):
 
         if not bot_is_admin:
             await event.reply(
-                message=to_smallcaps(
-                    "**🚫 I'm not an admin in this channel.**\n\n"
-                    "**➲ Please make me an admin with:**\n\n"
-                    "**➥ Invite New Members**\n\n"
-                    "🛠️ **Then use /fsub <channel username> to set force subscription.**"
-                ),
+                message="**🚫 ɪ'ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ᴄʜᴀɴɴᴇʟ.**\n\n**➲ ᴘʟᴇᴀꜱᴇ ᴍᴀᴋᴇ ᴍᴇ ᴀɴ ᴀᴅᴍɪɴ ᴡɪᴛʜ:**\n\n**➥ ɪɴᴠɪᴛᴇ ɴᴇᴡ ᴍᴇᴍʙᴇʀꜱ**\n\n🛠️ **ᴛʜᴇɴ ᴜꜱᴇ /ғꜱᴜʙ <ᴄʜᴀɴɴᴇʟ ᴜꜱᴇʀɴᴀᴍᴇ> ᴛᴏ ꜱᴇᴛ ꜰᴏʀᴄᴇ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ.**",
                 file="https://envs.sh/TnZ.jpg",
                 buttons=[
                     [Button.url(to_smallcaps("๏ Add me in channel ๏"), f"https://t.me/{(await Bad.get_me()).username}?startchannel=s&admin=invite_users+manage_video_chats")]
                 ]
             )
-            await asyncio.sleep(1)
             return
 
-        # Save force subscription settings to MongoDB
         forcesub_collection.update_one(
             {"chat_id": chat_id},
             {"$set": {"channel_id": channel_id, "channel_username": channel_username}},
@@ -119,101 +104,78 @@ async def set_forcesub(event):
                       else (getattr(event.sender, "first_name", "User")))
 
         await event.reply(
-            message=to_smallcaps(
-                f"**🎉 Force subscription set to** [{channel_title}]({channel_username}) **for this group.**\n\n"
-                f"**🆔 Channel ID:** `{channel_id}`\n"
-                f"**🖇️ Channel Link:** [Get Link]({channel_link})\n"
-                f"**👤 Set by:** {set_by_user}"
+            message=(
+                f"**🎉 ꜰᴏʀᴄᴇ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ꜱᴇᴛ ᴛᴏ** [{channel_title}]({channel_username}) **ꜰᴏʀ ᴛʜɪꜱ ɢʀᴏᴜᴘ.**\n\n"
+                f"**🆔 ᴄʜᴀɴɴᴇʟ ɪᴅ:** `{channel_id}`\n"
+                f"**🖇️ ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ:** [ɢᴇᴛ ʟɪɴᴋ]({channel_link})\n"
+                f"**👤 ꜱᴇᴛ ʙʏ:** {set_by_user}"
             ),
             file="https://envs.sh/Tn_.jpg",
             buttons=[[Button.inline(to_smallcaps("๏ Close ๏"), b"close_force_sub")]]
         )
-        await asyncio.sleep(1)
 
     except Exception as e:
         await event.reply(
-            message=to_smallcaps(
-                f"**❌ Error:** `{str(e)}`\n\n"
-                "**➲ Please make sure the channel is public or the bot is admin in the channel.**"
+            message=(
+                f"**❌ ᴇʀʀᴏʀ:** `{str(e)}`\n\n"
+                "**➲ ᴘʟᴇᴀꜱᴇ ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ɪꜱ ᴘᴜʙʟɪᴄ ᴏʀ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ.**"
             ),
             file="https://envs.sh/TnZ.jpg",
             buttons=[
                 [Button.url(to_smallcaps("๏ Add me in channel ๏"), f"https://t.me/{(await Bad.get_me()).username}?startchannel=s&admin=invite_users+manage_video_chats")]
             ]
         )
-        await asyncio.sleep(1)
 
-# Handle close button
 @Bad.on(events.CallbackQuery(pattern=b"close_force_sub"))
 async def close_force_sub(event):
-    await event.answer(to_smallcaps("Closed!"))
+    await event.answer("ᴄʟᴏꜱᴇᴅ!")
     await event.delete()
 
-# Check force subscription status
 async def check_forcesub(event):
     chat_id = event.chat_id
     user_id = event.sender_id
 
-    # Get force subscription data
     forcesub_data = forcesub_collection.find_one({"chat_id": chat_id})
     if not forcesub_data:
-        return True  # Allow if no force subscription
+        return True
 
     channel_id = forcesub_data["channel_id"]
     channel_username = forcesub_data["channel_username"]
 
     try:
-        # Check if user is a participant in the channel
         await Bad(GetParticipantRequest(channel_id, user_id))
         return True
     except UserNotParticipantError:
         await event.delete()
         channel_url = channel_username if channel_username.startswith("https://") else f"https://t.me/{channel_username.lstrip('@')}"
 
-        # Get user's name and try to fetch profile photo
         try:
             user = await event.client.get_entity(user_id)
         except Exception:
             user = None
 
-        # Name for display and hyperlink
-        sender_full_name = None
-        if user:
-            sender_full_name = user.first_name
-            if getattr(user, "last_name", None):
-                sender_full_name += f" {user.last_name}"
-        if not sender_full_name:
-            sender_full_name = "User"
+        sender_full_name = user.first_name if user else "User"
+        if user and getattr(user, "last_name", None):
+            sender_full_name += f" {user.last_name}"
 
-        # Try to download user's profile photo as a jpg file
-        profile_pic_path = None
-        temp_file = None
+        temp_file = f"profile_{user_id}.jpg"
         try:
-            temp_file = f"profile_{user_id}.jpg"
             profile_pic_path = await event.client.download_profile_photo(user, temp_file)
         except Exception:
             profile_pic_path = None
 
-        # Decide what to send as file
-        if profile_pic_path and os.path.exists(profile_pic_path):
-            photo_arg = profile_pic_path
-        else:
-            photo_arg = "https://envs.sh/TnZ.jpg"
-
-        # Prepare the clickable name for HTML message
+        photo_arg = profile_pic_path if profile_pic_path and os.path.exists(profile_pic_path) else "https://envs.sh/TnZ.jpg"
         clickable_name = f"<a href='tg://user?id={user_id}'>{sender_full_name}</a>"
 
         await event.respond(
-            message=to_smallcaps(
-                f"<b>👋 Hello {clickable_name},</b>\n\n"
-                f"<b>You need to join the <a href=\"{channel_url}\">channel</a> to send messages in this group.</b>"
+            message=(
+                f"<b>👋 ʜᴇʟʟᴏ {clickable_name},</b>\n\n"
+                f"<b>ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ <a href=\"{channel_url}\">ᴄʜᴀɴɴᴇʟ</a> ᴛᴏ ꜱᴇɴᴅ ᴍᴇꜱꜱᴀɢᴇꜱ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ.</b>"
             ),
             file=photo_arg,
             buttons=[[Button.url(to_smallcaps("๏ Join Channel ๏"), channel_url)]],
             parse_mode='html'
         )
-        await asyncio.sleep(1)
-        # Cleanup: delete temp profile image
         if profile_pic_path and os.path.exists(profile_pic_path):
             try:
                 os.remove(profile_pic_path)
@@ -222,13 +184,9 @@ async def check_forcesub(event):
 
     except ChatAdminRequiredError:
         forcesub_collection.delete_one({"chat_id": chat_id})
-        await event.respond(
-            to_smallcaps("**🚫 I'm no longer an admin in the forced subscription channel. Force subscription has been disabled.**")
-        )
-        await asyncio.sleep(1)
+        await event.respond("**🚫 ɪ'ᴍ ɴᴏ ʟᴏɴɢᴇʀ ᴀɴ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴇ ꜰᴏʀᴄᴇᴅ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ᴄʜᴀɴɴᴇʟ. ꜰᴏʀᴄᴇ ꜱᴜʙꜱᴄʀɪᴘᴛɪᴏɴ ʜᴀꜱ ʙᴇᴇɴ ᴅɪꜱᴀʙʟᴇᴅ.**")
     return False
 
-# Enforce force subscription for group messages
 @Bad.on(events.NewMessage())
 async def enforce_forcesub(event):
     if event.is_group and not event.sender.bot:
