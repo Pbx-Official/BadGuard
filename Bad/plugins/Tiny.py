@@ -78,3 +78,21 @@ def save_overlay(resized_image, overlay):
     output_file = "output.webp"
     overlay_copy.save(output_file, "WEBP", quality=95)
     return output_file
+
+
+__MODULE__ = "ᴛɪɴʏ sᴛɪᴄᴋᴇʀ"
+__HELP__ = """
+
+## 🐣 ᴛɪɴʏ ᴍᴇᴍᴇ ᴏᴠᴇʀʟᴀʏ
+
+» `/tiny` : ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ɪᴍᴀɢᴇ, sᴛɪᴄᴋᴇʀ, ɢɪꜰ ᴏʀ ᴠɪᴅᴇᴏ  
+• ᴄᴏɴᴠᴇʀᴛꜱ ɪᴛ ɪɴᴛᴏ ᴀ sᴍᴀʟʟ ᴠᴇʀꜱɪᴏɴ ᴘᴀꜱᴛᴇᴅ ᴏɴ ᴀ sᴘᴇᴄɪᴀʟ ᴛɪɴʏ sᴛʏʟᴇ ᴛᴇᴍᴘʟᴀᴛᴇ.
+
+❖ ᴡᴏʀᴋꜱ ᴏɴ:
+• ᴘʜᴏᴛᴏꜱ (.jpg, .png, etc.)
+• sᴛɪᴄᴋᴇʀs (.webp)
+• ᴀɴɪᴍᴀᴛᴇᴅ sᴛɪᴄᴋᴇʀs (.tgs)
+• ɢɪꜰs ᴀɴᴅ sʜᴏʀᴛ ᴠɪᴅᴇᴏꜱ (.mp4)
+
+❖ ᴘᴇʀꜰᴇᴄᴛ ꜰᴏʀ ᴍᴀᴋɪɴɢ ꜱᴀssʏ ᴛɪɴʏ ʀᴇᴀᴄᴛɪᴏɴs ᴏɴ ᴍᴇᴅɪᴀ
+"""
