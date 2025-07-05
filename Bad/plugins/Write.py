@@ -19,3 +19,13 @@ sᴜᴄᴇssғᴜʟʟʏ ᴡʀɪᴛᴛᴇɴ ᴛᴇxᴛ
     await m.delete()
     await message.reply_photo(photo=write,caption=caption)
 
+
+__MODULE__ = "ᴡʀɪᴛᴇ"
+__HELP__ = """
+
+## ᴡʀɪᴛᴇ ✍️
+
+» `/write` : ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴛᴇxᴛ ᴏʀ ɢɪᴠᴇ ᴛᴇxᴛ ᴀꜰᴛᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴡʀɪᴛᴇ ɪᴛ ᴏɴ ᴀ ᴘᴀᴘᴇʀ.
+
+❖ ᴏᴜᴛᴘᴜᴛ ɪꜱ ᴀɴ ɪᴍᴀɢᴇ ᴏꜰ ᴀ ʜᴀɴᴅᴡʀɪᴛᴛᴇɴ ᴘᴀɢᴇ.
+"""
