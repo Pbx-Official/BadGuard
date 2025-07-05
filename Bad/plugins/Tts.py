@@ -101,3 +101,28 @@ async def tts_stats(client, message):
         stats_message += f"{lang}: {count}\n"
 
     await message.reply_text(stats_message)
+
+
+__MODULE__ = "ᴛᴛꜱ"
+__HELP__ = """
+**<u>🔊 ᴛᴇxᴛ ᴛᴏ ꜱᴘᴇᴇᴄʜ ᴄᴏᴍᴍᴀɴᴅꜱ:</u>**
+
+• `/tts <text>` or `/ts <text>`  
+   ᴄᴏɴᴠᴇʀᴛꜱ ᴀ ɢɪᴠᴇɴ ᴛᴇxᴛ ᴛᴏ ᴠᴏɪᴄᴇ ᴍᴇꜱꜱᴀɢᴇ ᴅᴇꜰᴀᴜʟᴛ ɪɴ **ᴇɴɢʟɪꜱʜ**
+
+• Reply to a message with `/tts` or `/ts`  
+   ᴄᴏɴᴠᴇʀᴛꜱ ᴛʜᴀᴛ ʀᴇᴘʟɪᴇᴅ ᴛᴇxᴛ ɪɴᴛᴏ ᴀᴜᴅɪᴏ
+
+• Just type `/tts` or `/ts`  
+   ꜱʜᴏᴡꜱ ᴀ ʟɪꜱᴛ ᴏꜰ ʟᴀɴɢᴜᴀɢᴇꜱ ᴛᴏ ᴄʜᴏᴏꜱᴇ ꜰʀᴏᴍ
+
+• `/ttsstats` or `/tss`  
+   ꜱʜᴏᴡꜱ ᴛᴏᴛᴀʟ ᴛᴛꜱ ʀᴇǫᴜᴇꜱᴛꜱ ᴀɴᴅ ʟᴀɴɢᴜᴀɢᴇ-ᴡɪꜱᴇ ᴜꜱᴀɢᴇ ᴄᴏᴜɴᴛ
+
+<u>✅ ᴘᴏɪɴᴛꜱ ᴛᴏ ɴᴏᴛᴇ:</u>
+• ᴄᴀᴄʜᴇᴅ ꜰɪʟᴇꜱ ᴀʀᴇ ᴜꜱᴇᴅ ꜰᴏʀ ꜱᴀᴍᴇ ᴛᴇxᴛ ʟᴀɴɢ ᴘᴀɪʀꜱ  
+• ᴀᴜᴅɪᴏꜱ ᴀʀᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ ᴀꜰᴛᴇʀ 1 ᴅᴀʏ  
+• ᴅᴇꜰᴀᴜʟᴛ ʟᴀɴɢᴜᴀɢᴇ ɪꜱ **ᴇɴɢʟɪꜱʜ**
+
+Supported Languages: `/tts` ➠ [choose from buttons]
+"""
